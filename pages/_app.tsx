@@ -1,0 +1,14 @@
+import React from 'react'
+import { NextComponentType, NextPageContext } from 'next'
+
+import '../css/tailwind.css'
+
+type Props = {
+  Component: NextComponentType<NextPageContext, any, {}>
+  pageProps: any
+}
+const MyApp: React.FC<Props> = ({ Component, pageProps }) => (
+  <Component {...pageProps} />
+)
+
+export default MyApp

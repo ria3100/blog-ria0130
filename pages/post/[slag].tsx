@@ -11,13 +11,14 @@ function Zeit({ title, contents }: { title: string; contents: string }) {
 export async function getStaticPaths() {
   const content = await jdown('./content')
 
-  const paths = Object.keys(content).map(slag => `/blog/${slag}`)
+  const paths = Object.keys(content).map(slag => `/post/${slag}`)
   return { paths, fallback: false }
 }
 
 export async function getStaticProps({ params }: any) {
   const slag = params.slag
   const content = await jdown('./content')
+
   return {
     props: {
       title: content[slag].title,

@@ -10,8 +10,10 @@
     "export": "next export"
   },
   "dependencies": {
+    "@types/lodash": "^4.14.149",
     "@zeit/next-css": "^1.0.1",
     "jdown": "^1.0.3",
+    "lodash": "^4.17.15",
     "next": "^9.3.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",

@@ -2,7 +2,10 @@ import * as React from 'react'
 
 const Footer: React.FC = () => {
   return (
-    <footer className="bg-white" style={{ height: 460 }}>
+    <footer
+      className="bg-white border-t border-gray-200"
+      style={{ height: 460 }}
+    >
       {/* <div className="flex items-center justify-center w-48 h-48 bg-dance-to-forget transform rotate-45">
         <div className="w-40 h-40 bg-white"></div>
       </div>

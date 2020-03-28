@@ -1,2 +1,2 @@
-export { default as HomeTemplate } from '~/components/templates/homeTemplate'
-export { default as PostTemplate } from '~/components/templates/postTemplate'
+export { default as HomeTemplate } from '~/components/templates/HomeTemplate'
+export { default as PostTemplate } from '~/components/templates/PostTemplate'

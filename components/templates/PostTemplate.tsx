@@ -1,24 +1,18 @@
 import * as React from 'react'
 
-import { Navigation, Mainvisual, Foo, Footer } from '~/components/organisms'
+import { Navigation, Footer } from '~/components/organisms'
 
-const HomeTemplate = () => {
+type Props = { title: string; contents: string }
+const PostTemplate: React.FC<Props> = ({ title, contents }) => {
   return (
     <>
       <div className="flex flex-col min-h-screen">
         <Navigation />
-        <Mainvisual />
         <div className="my-16 mx-32">
-          <Foo />
+          {title} / {contents}
           <div className="w-full flex m-8 ">
-            <div
-              className="h-48 w-48 bg-cover rounded-l-lg text-center overflow-hidden"
-              style={{
-                backgroundImage: `url('https://tailwindcss.com/img/card-top.jpg')`,
-              }}
-              title="Woman holding a mug"
-            ></div>
-            <div className="w-auto border-r border-b border-t border-gray-200 rounded-r-lg bg-white p-4 flex flex-col justify-between">
+            <div className="h-48 w-48 rounded-l-lg text-center overflow-hidden bg-dance-to-forget"></div>
+            <div className="border-r border-b border-t border-gray-200 rounded-r-lg bg-white p-4 flex flex-col justify-between">
               <div className="mb-8">
                 <p className="text-sm text-gray-600 flex items-center">
                   Members only
@@ -47,4 +41,4 @@ const HomeTemplate = () => {
   )
 }
 
-export default HomeTemplate
+export default PostTemplate

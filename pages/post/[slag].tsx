@@ -1,15 +1,13 @@
-import jdown from 'jdown'
+import { getContents } from '~/utils/post'
+import { PostTemplate } from '~/components/templates'
 
-function Zeit({ title, contents }: { title: string; contents: string }) {
-  return (
-    <div>
-      {title} / {contents}
-    </div>
-  )
+type Props = { title: string; contents: string }
+const Post: React.FC<Props> = ({ title, contents }) => {
+  return <PostTemplate title={title} contents={contents} />
 }
 
 export async function getStaticPaths() {
-  const content = await jdown('./content')
+  const content = await getContents()
 
   const paths = Object.keys(content).map(slag => `/post/${slag}`)
   return { paths, fallback: false }
@@ -17,7 +15,8 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params }: any) {
   const slag = params.slag
-  const content = await jdown('./content')
+
+  const content = await getContents()
 
   return {
     props: {
@@ -27,4 +26,4 @@ export async function getStaticProps({ params }: any) {
   }
 }
 
-export default Zeit
+export default Post

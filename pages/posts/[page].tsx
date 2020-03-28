@@ -1,24 +1,26 @@
 import * as React from 'react'
-import { getPageCountList, getPostList } from '~/utils/post'
+// import { getPageCountList, getPostList } from '~/utils/post'
 
-type Props = { postList: Post[] }
-const Posts: React.FC<Props> = ({ postList }) => {
-  return <div>{JSON.stringify(postList)}</div>
-}
+export default () => <p>posts</p>
 
-export async function getStaticPaths() {
-  const pageCountList = await getPageCountList()
-  const paths = pageCountList.map(i => `/posts/${i}`)
+// type Props = { postList: Post[] }
+// const Posts: React.FC<Props> = ({ postList }) => {
+//   return <div>{JSON.stringify(postList)}</div>
+// }
 
-  return { paths, fallback: false }
-}
+// export async function getStaticPaths() {
+//   const pageCountList = await getPageCountList()
+//   const paths = pageCountList.map(i => `/posts/${i}`)
 
-type StaticProps = { params: { page: number } }
-export async function getStaticProps({ params }: StaticProps) {
-  const { page } = params
-  const postList = await getPostList(page)
+//   return { paths, fallback: false }
+// }
 
-  return { props: { postList } }
-}
+// type StaticProps = { params: { page: number } }
+// export async function getStaticProps({ params }: StaticProps) {
+//   const { page } = params
+//   const postList = await getPostList(page)
 
-export default Posts
+//   return { props: { postList } }
+// }
+
+// export default Posts

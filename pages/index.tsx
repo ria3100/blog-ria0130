@@ -1,6 +1,6 @@
 import { NextPage, GetStaticProps } from 'next'
 
-import HomeTemplate from '~/components/templates/home'
+import { HomeTemplate } from '~/components/templates'
 
 const Home: NextPage = () => {
   return <HomeTemplate />

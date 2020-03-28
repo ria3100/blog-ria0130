@@ -10,7 +10,7 @@ const HomeTemplate = () => {
         <Mainvisual />
         <div className="my-16 mx-32">
           <Foo />
-          <div className="w-full flex m-8 ">
+          <div className="w-full flex m-8">
             <div className="h-48 w-48 rounded-l-lg text-center overflow-hidden bg-dance-to-forget"></div>
             <div className="border-r border-b border-t border-gray-200 rounded-r-lg bg-white p-4 flex flex-col justify-between">
               <div className="mb-8">

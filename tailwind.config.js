@@ -23,14 +23,38 @@ module.exports = {
       fontFamily: {
         'product-sans': ['Product Sans', 'sans-serif'],
         lato: ['Lato', 'sans-serif'],
+        body: [
+          'BlinkMacSystemFont',
+          '-apple-system',
+          'Segoe UI',
+          'Roboto',
+          'Oxygen',
+          'Ubuntu',
+          'Cantarell',
+          'Fira Sans',
+          'Droid Sans',
+          'Helvetica Neue',
+          'Helvetica',
+          'Arial',
+          'sans-serif',
+        ],
       },
       height: {
+        '30vh-80px': 'calc(30vh - 120px)',
+        '30vh': '30vh',
         '80vh': '80vh',
       },
       maxHeight: {
         '900': '900px',
       },
+      inset: {
+        '-50': '-50px',
+      },
+      zIndex: {
+        '-1': '-1',
+      },
     },
+
     gradients: theme => ({
       'dance-to-forget': ['30deg', '#FF4E50', '#F9D423'],
       'bora-bora': ['30deg', '#2BC0E4', '#EAECC6'],

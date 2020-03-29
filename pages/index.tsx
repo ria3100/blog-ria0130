@@ -1,14 +1,9 @@
-import { NextPage, GetStaticProps } from 'next'
+import { NextPage } from 'next'
 
 import HomeTemplate from '~/components/templates/home'
 
 const Home: NextPage = () => {
   return <HomeTemplate />
 }
-
-// export const getStaticProps: GetStaticProps = async () => {
-//   const foo = 'Foo'
-//   return { props: { foo } }
-// }
 
 export default Home

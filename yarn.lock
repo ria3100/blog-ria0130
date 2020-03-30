@@ -1374,6 +1374,11 @@
   resolved "https://registry.yarnpkg.com/@mdx-js/util/-/util-1.5.8.tgz#cbadda0378af899c17ce1aa69c677015cab28448"
   integrity sha512-a7Gjjw8bfBSertA/pTWBA/9WKEhgaSxvQE2NTSUzaknrzGFOhs4alZSHh3RHmSFdSWv5pUuzAgsWseMLhWEVkQ==
 
+"@next/mdx@^9.3.2":
+  version "9.3.2"
+  resolved "https://registry.yarnpkg.com/@next/mdx/-/mdx-9.3.2.tgz#f732aa95a2349f994f2e1928546fc9a8b4e0e090"
+  integrity sha512-nsXWEYh+m2g/c/rYRLlgnANFz4JYXx8SI9V+pJdToVZSAzcaAI74uOi+/YiAMh7pvg+mb1gszbqpz4jRl1xleg==
+
 "@next/polyfill-nomodule@9.3.1":
   version "9.3.1"
   resolved "https://registry.yarnpkg.com/@next/polyfill-nomodule/-/polyfill-nomodule-9.3.1.tgz#d5e12855cbb3d9a9b668fdc133d843a025dbdb6c"
@@ -5937,7 +5942,7 @@ is-path-inside@^1.0.0:
   dependencies:
     path-is-inside "^1.0.1"
 
-is-plain-obj@^1.0.0:
+is-plain-obj@^1.0.0, is-plain-obj@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/is-plain-obj/-/is-plain-obj-1.1.0.tgz#71a50c8429dfca773c92a390a4a03b39fcd51d3e"
   integrity sha1-caUMhCnfync8kqOQpKA7OfzVHT4=

@@ -1,0 +1,8 @@
+#article-body p {
+  padding: 16px;
+}
+
+#article-body pre {
+  padding: 16px;
+  background: #272822;
+}

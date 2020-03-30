@@ -1,20 +1,15 @@
 import * as React from 'react'
 
 import { getArticles } from '~/utils/article'
+import { PostTemplate } from '~/components/templates'
+
+import '../../css/article.css'
 
 type Props = {
   article: any
 }
 const Article: React.FC<Props> = ({ article }) => {
-  return (
-    <div>
-      <div
-        dangerouslySetInnerHTML={{
-          __html: article.body,
-        }}
-      />
-    </div>
-  )
+  return <PostTemplate title={article.title} contents={article.body} />
 }
 
 export async function getStaticPaths() {

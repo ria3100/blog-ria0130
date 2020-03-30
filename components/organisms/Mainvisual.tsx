@@ -5,7 +5,7 @@ const Mainvisual: React.FC = () => {
     <div className="flex flex-col justify-center w-full h-80vh max-h-900 bg-gray-900">
       <div>
         <h1 className="font-product-sans font-bold text-7rem tracking-wide text-center text-gray-100">
-          Foo
+          Ria
         </h1>
         <p className="font-lato font-light text-xl tracking-wide text-center text-gray-100">
           Front-end Engineer.

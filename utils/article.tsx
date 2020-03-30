@@ -1,15 +1,27 @@
+import * as React from 'react'
 import { preval } from 'ts-transformer-preval-macro'
+
+const ReactDomServer = require('react-dom/server')
+const { MDXProvider } = require('@mdx-js/react')
 
 import { formatSEODate, getSecondsSinceEpoch } from '~/utils/formatters'
 
 const articleFileNames = (): Promise<string[]> => {
   const articleFileNames =
-    preval`module.exports = require("fs").readdirSync("./pages/article")` || []
+    preval`module.exports = require("fs").readdirSync("./article")` || []
   return Promise.resolve(articleFileNames)
 }
 
 const createArticleList = (fileNameList: string[]) => {
   return fileNameList.reduce((collection, name) => {
+    const { default: Component } = require(`../article/${name}`)
+
+    const body = ReactDomServer.renderToStaticMarkup(
+      <MDXProvider components={{}}>
+        <Component />
+      </MDXProvider>
+    )
+
     const {
       title,
       tags,
@@ -19,7 +31,7 @@ const createArticleList = (fileNameList: string[]) => {
       hideProgressBar = false,
       exclude = false,
       ...moreMeta
-    } = require(`../pages/article/${name}`).meta
+    } = require(`../article/${name}`).meta
 
     if (exclude) return collection
 
@@ -48,6 +60,7 @@ const createArticleList = (fileNameList: string[]) => {
       type: 'post',
       secondsSinceEpoch,
       ...moreMeta,
+      body,
     })
 
     return collection

@@ -6,7 +6,6 @@ type Props = {
   articles: any[]
 }
 const List: React.FC<Props> = ({ articles }) => {
-  console.log(articles)
   return (
     <>
       {articles.map(item => (

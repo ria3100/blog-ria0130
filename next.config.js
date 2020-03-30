@@ -1,8 +1,13 @@
 const path = require('path')
 const withCSS = require('@zeit/next-css')
+const shiki = require('rehype-shiki')
 const withMDX = require('@zeit/next-mdx')({
   // parse mdx files
   extension: /\.mdx?$/,
+  options: {
+    remarkPlugins: [],
+    rehypePlugins: [[shiki, { theme: 'monokai' }]],
+  },
 })
 
 module.exports = withMDX(

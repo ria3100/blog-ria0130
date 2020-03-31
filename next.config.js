@@ -18,9 +18,9 @@ const withMDX = require('@zeit/next-mdx')({
         {
           pre: 'shiki bg-gray-900 p-6',
           p: 'p-6',
-          h1: 'text-2xl p-6',
-          h2: 'text-xl p-6',
-          h3: 'text-lg p-6',
+          h1: 'text-4xl p-6',
+          h2: 'text-3xl p-6',
+          h3: 'text-xl p-6',
         },
       ],
     ],
@@ -32,7 +32,7 @@ module.exports = withMDX(
     withCSS({
       pageExtensions: ['tsx', 'mdx'],
       exportTrailingSlash: true,
-      exportPathMap: function() {
+      exportPathMap: () => {
         return {
           '/': { page: '/' },
           '/list': { page: '/list' },

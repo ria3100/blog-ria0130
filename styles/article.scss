@@ -1,0 +1,41 @@
+ul.tags {
+
+  li {
+    float:left;
+  }
+
+}
+
+.parent {
+	background-image: linear-gradient(30deg, #FF4E50, #F9D423);
+	border-radius: 3px;
+	padding: 1px;
+}
+.child {
+	background-color: #fff;
+	border-radius: 2px;
+  text-align: center;
+}
+
+.articleBody {
+  h1::after {
+    content: "";
+    width: 100%;
+    height: 4px;
+    display: block;
+    background-image: linear-gradient(30deg, #FF4E50, #F9D423);
+  }
+
+  h2::after {
+    content: "";
+    width: 100%;
+    height: 2px;
+    display: block;
+    background-image: linear-gradient(120deg, #2BC0E4, #EAECC6);
+  }
+
+  h3::before {
+    content: "#";
+    margin-right: 8px;
+  }
+}

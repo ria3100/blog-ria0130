@@ -7,7 +7,9 @@ const Navigation: React.FC = () => {
         <span className="inline-block py-2 px-4 text-gray-400"></span>
       </li>
       <li className="mr-3">
-        <span className="inline-block py-2 px-4 text-gray-400">Ria</span>
+        <span className="font-product-sans font-bold tracking-wide text-center text-gray-200 inline-block py-2 px-4">
+          Ria
+        </span>
       </li>
       <li className="mr-3">
         <span className="inline-block py-2 px-4 text-gray-400">

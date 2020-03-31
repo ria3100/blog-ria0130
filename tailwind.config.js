@@ -40,8 +40,8 @@ module.exports = {
         ],
       },
       height: {
-        '30vh-80px': 'calc(30vh - 120px)',
-        '30vh': '30vh',
+        '40vh-80px': 'calc(40vh - 120px)',
+        '40vh': '40vh',
         '80vh': '80vh',
       },
       maxHeight: {

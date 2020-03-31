@@ -13,7 +13,7 @@ const Article: React.FC<Props> = ({ article }) => {
         <title>{article.title}</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
-      <PostTemplate title={article.title} contents={article.body} />
+      <PostTemplate article={article} />
     </>
   )
 }

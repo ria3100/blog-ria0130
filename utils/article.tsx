@@ -13,64 +13,59 @@ const articleFileNames = (): Promise<string[]> => {
 }
 
 const createArticleList = (fileNameList: string[]) => {
-  return fileNameList.reduce((collection, name) => {
-    const { default: Component } = require(`../article/${name}`)
+  return fileNameList
+    .map(name => {
+      const { default: Component } = require(`../article/${name}/index.mdx`)
 
-    const body = ReactDomServer.renderToStaticMarkup(
-      <MDXProvider components={{}}>
-        <Component />
-      </MDXProvider>
-    )
+      const body: string = ReactDomServer.renderToStaticMarkup(
+        <MDXProvider components={{}}>
+          <Component />
+        </MDXProvider>
+      )
 
-    const {
-      title,
-      tags,
-      publishDate,
-      modifiedDate,
-      seoDescription,
-      hideProgressBar = false,
-      exclude = false,
-      ...moreMeta
-    } = require(`../article/${name}`).meta
+      const {
+        title,
+        tags,
+        publishDate,
+        modifiedDate,
+        seoDescription,
+        hideProgressBar = false,
+        exclude = false,
+      } = require(`../article/${name}/index.mdx`).meta as Meta
 
-    if (exclude) return collection
+      const cleaned_name = name.split('.')[0]
 
-    const cleaned_name = name.split('.')[0]
+      const formattedPublishDate = formatSEODate(publishDate)
+      const formattedModifiedDate = formatSEODate(modifiedDate, true)
+      const secondsSinceEpoch = getSecondsSinceEpoch(formattedPublishDate)
 
-    const formattedPublishDate = formatSEODate(publishDate)
-
-    const formattedModifiedDate = formatSEODate(modifiedDate, true)
-
-    const secondsSinceEpoch = getSecondsSinceEpoch(formattedPublishDate)
-
-    collection.push({
-      title,
-      tags,
-      publishDate,
-      formattedPublishDate,
-      modifiedDate,
-      formattedModifiedDate,
-      seoDescription,
-      exclude,
-      urlPath: `/${cleaned_name}`,
-      fullUrlPath: `/article/${cleaned_name}`,
-      canonicalUrl: `/${cleaned_name}`,
-      hideProgressBar,
-      name: cleaned_name,
-      type: 'post',
-      secondsSinceEpoch,
-      ...moreMeta,
-      body,
+      const article: Article = {
+        title,
+        tags,
+        publishDate,
+        formattedPublishDate,
+        modifiedDate,
+        formattedModifiedDate,
+        seoDescription,
+        exclude,
+        urlPath: `/${cleaned_name}`,
+        fullUrlPath: `/article/${cleaned_name}`,
+        canonicalUrl: `/${cleaned_name}`,
+        hideProgressBar,
+        name: cleaned_name,
+        type: 'post',
+        secondsSinceEpoch,
+        body,
+      }
+      return article
     })
-
-    return collection
-  }, [] as any)
+    .filter(article => !article.exclude)
 }
 
 export const getArticles = async () => {
   const fileNameList = await articleFileNames()
   const sortedList = createArticleList(fileNameList)
-    .sort((a: any, b: any) => a.secondsSinceEpoch - b.secondsSinceEpoch)
+    .sort((a, b) => a.secondsSinceEpoch - b.secondsSinceEpoch)
     .reverse()
 
   return sortedList

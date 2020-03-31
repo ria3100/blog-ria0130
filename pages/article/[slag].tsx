@@ -1,31 +1,37 @@
 import * as React from 'react'
+import { GetStaticProps, GetStaticPaths } from 'next'
+import Head from 'next/head'
 
 import { getArticles } from '~/utils/article'
 import { PostTemplate } from '~/components/templates'
 
-import '../../css/article.css'
-
-type Props = {
-  article: any
-}
+type Props = { article: Article }
 const Article: React.FC<Props> = ({ article }) => {
-  return <PostTemplate title={article.title} contents={article.body} />
+  return (
+    <>
+      <Head>
+        <title>{article.title}</title>
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+      </Head>
+      <PostTemplate title={article.title} contents={article.body} />
+    </>
+  )
 }
 
-export async function getStaticPaths() {
+export const getStaticPaths: GetStaticPaths = async () => {
   const articles = await getArticles()
 
   const paths = articles.map((article: any) => `/article${article.urlPath}`)
   return { paths, fallback: false }
 }
 
-export async function getStaticProps({ params }: any) {
+export const getStaticProps: GetStaticProps = async ({ params }: any) => {
   const slag = params.slag
   const articles = await getArticles()
 
   const article = articles.find(
-    (article: any) => article.urlPath === `/${slag}`
-  )
+    article => article.urlPath === `/${slag}`
+  ) as Article
 
   return { props: { article } }
 }

@@ -1,7 +1,7 @@
 import React from 'react'
 import { NextComponentType, NextPageContext } from 'next'
 
-import '../css/tailwind.css'
+import '../style/tailwind.css'
 
 type Props = {
   Component: NextComponentType<NextPageContext, any, {}>

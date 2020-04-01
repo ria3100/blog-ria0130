@@ -2,7 +2,7 @@ import * as React from 'react'
 import { GetStaticProps, GetStaticPaths } from 'next'
 import Head from 'next/head'
 
-import { getArticles } from '~/utils/article'
+import { getArticles, getArticle } from '~/utils/article'
 import { PostTemplate } from '~/components/templates'
 
 type Props = { article: Article }
@@ -26,12 +26,9 @@ export const getStaticPaths: GetStaticPaths = async () => {
 }
 
 export const getStaticProps: GetStaticProps = async ({ params }: any) => {
-  const slag = params.slag
-  const articles = await getArticles()
+  const name = (params.slag as string).replace('/', '')
 
-  const article = articles.find(
-    article => article.urlPath === `/${slag}`
-  ) as Article
+  const article = await getArticle(name)
 
   return { props: { article } }
 }

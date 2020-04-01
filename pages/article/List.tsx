@@ -2,9 +2,7 @@ import * as React from 'react'
 
 import { getArticles } from '~/utils/article'
 
-type Props = {
-  articles: any[]
-}
+type Props = { articles: any[] }
 const List: React.FC<Props> = ({ articles }) => {
   return (
     <>

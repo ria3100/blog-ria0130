@@ -1,9 +1,6 @@
-import * as React from 'react'
 import { preval } from 'ts-transformer-preval-macro'
 
-const ReactDomServer = require('react-dom/server')
-const { MDXProvider } = require('@mdx-js/react')
-
+import { mdx2string } from '~/utils/mdx2string'
 import { formatSEODate, getSecondsSinceEpoch } from '~/utils/formatters'
 
 const articleFileNames = (): Promise<string[]> => {
@@ -13,14 +10,8 @@ const articleFileNames = (): Promise<string[]> => {
 }
 
 const loadArticle = async (name: string) => {
-  const { default: Component, meta } = await import(
+  const { default: MDXComponent, meta } = await import(
     `../contents/${name}/index.mdx`
-  )
-
-  const body: string = ReactDomServer.renderToStaticMarkup(
-    <MDXProvider components={{}}>
-      <Component />
-    </MDXProvider>
   )
 
   const {
@@ -38,6 +29,7 @@ const loadArticle = async (name: string) => {
   const formattedPublishDate = formatSEODate(publishDate)
   const formattedModifiedDate = formatSEODate(modifiedDate, true)
   const secondsSinceEpoch = getSecondsSinceEpoch(formattedPublishDate)
+  const body = mdx2string(MDXComponent)
 
   const article: Article = {
     title,

@@ -9,7 +9,7 @@ export default class MyDocument extends Document {
 
   render() {
     return (
-      <html>
+      <html lang="ja">
         <Head/>
         <body className="bg-body-bg">
           <Main />

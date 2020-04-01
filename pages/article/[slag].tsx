@@ -1,18 +1,21 @@
 import * as React from 'react'
 import { GetStaticProps, GetStaticPaths } from 'next'
-import Head from 'next/head'
 
 import { getArticles, getArticle } from '~/utils/article'
 import { PostTemplate } from '~/components/templates'
+import { Meta } from '~/components/atoms'
 
 type Props = { article: Article }
 const Article: React.FC<Props> = ({ article }) => {
+  const meta = {
+    title: article.title,
+    og: { image: '', url: article.title },
+    keywords: article.tags,
+  }
+
   return (
     <>
-      <Head>
-        <title>{article.title}</title>
-        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-      </Head>
+      <Meta {...meta} />
       <PostTemplate article={article} />
     </>
   )

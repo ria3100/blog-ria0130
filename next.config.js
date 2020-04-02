@@ -1,4 +1,5 @@
 const path = require('path')
+const fs = require('fs')
 
 const withCSS = require('@zeit/next-css')
 const withSass = require('@zeit/next-sass')
@@ -33,10 +34,20 @@ module.exports = withMDX(
       pageExtensions: ['tsx', 'mdx'],
       exportTrailingSlash: true,
       exportPathMap: async () => {
-        const paths = {
+        const staticPagePaaths = {
           '/': { page: '/' },
           '/article/list': { page: '/article/list' },
         }
+
+        const articles = fs.readdirSync('./contents')
+
+        const paths = articles.reduce((acc, article) => {
+          acc[`/article/${article}`] = {
+            page: '/article/[slag]',
+            query: { slag: article },
+          }
+          return acc
+        }, staticPagePaaths)
 
         return paths
       },

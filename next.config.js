@@ -17,6 +17,7 @@ const withMDX = require('@zeit/next-mdx')({
       [
         addClasses,
         {
+          // postcss.config.js の whitelist にも追加すること
           pre: 'shiki bg-gray-900 p-6',
           p: 'p-6',
           h1: 'text-4xl p-6',
@@ -31,13 +32,15 @@ const withMDX = require('@zeit/next-mdx')({
 module.exports = withMDX(
   withSass(
     withCSS({
-      pageExtensions: ['tsx', 'mdx'],
+      pageExtensions: ['tsx'],
       exportTrailingSlash: true,
-      exportPathMap: async () => {
-        const staticPagePaaths = {
+      exportPathMap: async (_, { dev }) => {
+        const staticPagePaths = {
           '/': { page: '/' },
           '/article/list': { page: '/article/list' },
         }
+
+        if (dev) return staticPagePaths
 
         const articles = fs.readdirSync('./contents')
 
@@ -47,7 +50,7 @@ module.exports = withMDX(
             query: { slag: article },
           }
           return acc
-        }, staticPagePaaths)
+        }, staticPagePaths)
 
         return paths
       },

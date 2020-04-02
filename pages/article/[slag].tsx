@@ -24,7 +24,7 @@ const Article: React.FC<Props> = ({ article }) => {
 export const getStaticPaths: GetStaticPaths = async () => {
   const articles = await getArticles()
 
-  const paths = articles.map((article: any) => `/article${article.urlPath}`)
+  const paths = articles.map((article: Article) => article.fullUrlPath)
   return { paths, fallback: false }
 }
 

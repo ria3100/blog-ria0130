@@ -2,11 +2,12 @@ import * as React from 'react'
 import Link from 'next/link'
 
 import { Navigation, Mainvisual, Foo, Footer } from '~/components/organisms'
+import { AnimatedRoute } from '~/components/atoms'
 
 type Props = { articles: Article[] }
 const HomeTemplate: React.FC<Props> = ({ articles }) => {
   return (
-    <>
+    <AnimatedRoute>
       <div className="flex flex-col min-h-screen">
         <Navigation />
         <Mainvisual />
@@ -45,7 +46,7 @@ const HomeTemplate: React.FC<Props> = ({ articles }) => {
         </div>
       </div>
       <Footer />
-    </>
+    </AnimatedRoute>
   )
 }
 

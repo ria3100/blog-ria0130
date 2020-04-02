@@ -1,6 +1,5 @@
 import React from 'react'
 import { NextComponentType, NextPageContext } from 'next'
-const { PageTransition } = require('next-page-transitions')
 
 import '../styles/main.scss'
 
@@ -9,9 +8,7 @@ type Props = {
   pageProps: any
 }
 const MyApp: React.FC<Props> = ({ Component, pageProps }) => (
-  <PageTransition timeout={160} classNames="page-transition">
-    <Component {...pageProps} />
-  </PageTransition>
+  <Component {...pageProps} />
 )
 
 export default MyApp

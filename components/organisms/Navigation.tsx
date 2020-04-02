@@ -1,4 +1,5 @@
 import * as React from 'react'
+import Link from 'next/link'
 
 const Navigation: React.FC = () => {
   return (
@@ -8,7 +9,9 @@ const Navigation: React.FC = () => {
       </li>
       <li className="mr-3">
         <span className="font-product-sans font-bold tracking-wide text-center text-gray-200 inline-block py-2 px-4">
-          Ria
+          <Link href="/">
+            <a>Ria</a>
+          </Link>
         </span>
       </li>
       <li className="mr-3">

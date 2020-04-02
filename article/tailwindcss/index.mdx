@@ -1,0 +1,54 @@
+export const meta = {
+    title: "React / TypeScript 環境に tailwindcss を導入する",
+    tags: ["tag-1", "tag-2"],
+    publishDate: "2018-01-01",
+    modifiedDate: false,
+    seoDescription: "This post has an embedded Twitter card",
+    exclude: false
+};
+
+
+
+
+# テキスト
+
+これまで `Material UI` や `Bulma` といった UIコンポーネントやCSSフレームワークをよく利用していたのですが、コンポーネントが用意しているスタイルに手を加えることが多く、カスタマイズできるようになっていても使用箇所ごとに個別の変更が必要だったり
+
+tailwindcss はあらかじめ用意された低レベルのユーティリティスタイルを組み合わせることでページを作成します。スタイルを変更しないので意図しない箇所に影響が出ることもなく
+
+```js
+<div className="min-h-screen flex items-center justify-center">
+  <h1 className="text-5xl text-indigo-400 font-sans">
+    Hello world.
+  </h1>
+</div>
+```
+
+## テキスト
+
+tailwindcss は Bootstrap や Bulma と比べファイルサイズが大きいため、使用されていないスタイルを削除することで他のCSSフレームワークよりも小さくする仕組みが用意されています。
+
+
+
+
+### テキスト
+
+この記事では上記をふまえた上で React / TypeScript 環境に tailwindcss を導入する流れを紹介していきます。
+
+```sh
+$ yarn add tailwindcss
+$ yarn add -D @fullhuman/postcss-purgecss autoprefixer css-loader mini-css-extract-plugin postcss-cli postcss-import postcss-loader
+```
+
+はじめに tailwindcss をwebpack から読み込むための設定を行います。
+
+
+css のルールで use の部分に MiniCssExtractPlugin.loader, css-loader, postcss-loader の3つを指定していますが、実行時は逆順で実行されるので postcss-loader が最初になるのに気をつけてください。
+mini-css-extract-plugin は JavaScript 内で import したCSSファイルを外部ファイルにして読み込むために必要なプラグインでHTMLのヘッダにCSSファイルのリンクが追加されます。
+以前は extract-text-webpack-plugin が使われていましたが weboack 4 では非推奨になっています。
+もし外部ファイルかする必要がなければ style-loader に置き換えることでヘッダ内にインラインで出力されます。
+
+tailwindcss をそのまま使うとファイルサイズが大きいので purgecss を使ってアプリケーション内で使われているスタイルだけを抽出します。この部分はHMRが有効にならないので開発中は purgecss を無効にしています。
+今回は React / TypeScript で作っていて content に TSX を指定してるのですが、HTML, Pug, Vue などでも使われているスタイルを抽出できます。
+
+JavaScript 側で tailwindcss を読み込んだCSSファイルを import します。

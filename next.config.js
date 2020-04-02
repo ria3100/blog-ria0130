@@ -32,11 +32,13 @@ module.exports = withMDX(
     withCSS({
       pageExtensions: ['tsx', 'mdx'],
       exportTrailingSlash: true,
-      exportPathMap: () => {
-        return {
+      exportPathMap: async () => {
+        const paths = {
           '/': { page: '/' },
-          '/list': { page: '/list' },
+          '/article/list': { page: '/article/list' },
         }
+
+        return paths
       },
       webpack: config => {
         config.resolve.alias['~'] = path.resolve(__dirname)

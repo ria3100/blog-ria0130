@@ -1,14 +1,22 @@
 import * as React from 'react'
+import Link from 'next/link'
 
 import { Navigation, Mainvisual, Foo, Footer } from '~/components/organisms'
 
-const HomeTemplate = () => {
+type Props = { articles: Article[] }
+const HomeTemplate: React.FC<Props> = ({ articles }) => {
   return (
     <>
       <div className="flex flex-col min-h-screen">
         <Navigation />
         <Mainvisual />
         <div className="my-16 mx-32">
+          {articles.map((article, i) => (
+            <Link href={article.fullUrlPath} key={i}>
+              <a>{article.title}</a>
+            </Link>
+          ))}
+
           <Foo />
           <div className="w-full flex m-8">
             <div className="h-48 w-48 rounded-l-lg text-center overflow-hidden bg-dance-to-forget"></div>

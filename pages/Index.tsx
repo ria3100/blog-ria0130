@@ -1,9 +1,17 @@
 import { NextPage } from 'next'
 
 import { HomeTemplate } from '~/components/templates'
+import { getArticles } from '~/utils/article'
 
-const Home: NextPage = () => {
-  return <HomeTemplate />
+type Props = { articles: Article[] }
+const Home: NextPage<Props> = ({ articles }) => {
+  return <HomeTemplate articles={articles} />
+}
+
+export const getStaticProps = async () => {
+  const articles = await getArticles()
+
+  return { props: { articles } }
 }
 
 export default Home

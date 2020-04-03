@@ -2,7 +2,8 @@ import * as React from 'react'
 import { GetStaticProps, GetStaticPaths } from 'next'
 
 import { getArticles, getArticle } from '~/utils/article'
-import { PostTemplate } from '~/components/templates'
+
+import { ArticleTemplate } from '~/components/templates'
 import { Meta } from '~/components/atoms'
 
 type Props = { article: Article }
@@ -16,7 +17,7 @@ const Article: React.FC<Props> = ({ article }) => {
   return (
     <>
       <Meta {...meta} />
-      <PostTemplate article={article} />
+      <ArticleTemplate article={article} />
     </>
   )
 }

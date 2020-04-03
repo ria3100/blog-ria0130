@@ -35,7 +35,8 @@ module.exports = withMDX(
     exportPathMap: async (_, { dev }) => {
       const staticPagePaths = {
         '/': { page: '/' },
-        '/article/list': { page: '/article/list' },
+        '/article/list': { page: '/article/List' },
+        '/about': { page: '/About' },
       }
 
       if (dev) return staticPagePaths

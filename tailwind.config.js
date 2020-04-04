@@ -53,6 +53,13 @@ module.exports = {
       zIndex: {
         '-1': '-1',
       },
+      padding: {
+        '1px': '1px',
+      },
+      borderRadius: {
+        '3px': '3px',
+        '2px': '2px',
+      },
     },
 
     gradients: theme => ({

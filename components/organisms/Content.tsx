@@ -1,6 +1,7 @@
 import * as React from 'react'
 
-import { Tags } from '~/components/organisms'
+import { Tags } from '~/components/molecules'
+import { Date } from '~/components/atoms'
 
 import '~/styles/article.scss'
 
@@ -14,12 +15,11 @@ const Content: React.FC<{ article: Article }> = ({ article }) => {
         <div className="flex items-center justify-between flex-wrap">
           <div className="w-1/3 p-2">
             <div className="text-gray-700">
-              <i className="far fa-clock" />
-              {article.publishDate}
+              <Date date={article.publishDate} />
             </div>
           </div>
           <div className="w-1/3 p-2">
-            <Tags />
+            <Tags tags={article.tags} />
           </div>
         </div>
         <div className="articleBody">

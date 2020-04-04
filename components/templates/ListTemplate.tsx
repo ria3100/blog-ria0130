@@ -1,16 +1,16 @@
 import * as React from 'react'
 
-import { Navigation, Footer } from '~/components/organisms'
+import { Navigation, List, Footer } from '~/components/organisms'
 import { AnimatedRoute } from '~/components/atoms'
 
-const PostTemplate: React.FC = ({ children }) => {
+type Props = { articles: Article[] }
+const PostTemplate: React.FC<Props> = ({ articles }) => {
   return (
     <AnimatedRoute>
       <div className="flex flex-col min-h-screen">
-        <div className="relative">
-          <div className="absolute w-full h-40vh max-h-900 bg-gray-900 -z-1" />
+        <div className="">
           <Navigation />
-          {children}
+          <List articles={articles} />
         </div>
       </div>
       <Footer />

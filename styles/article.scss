@@ -1,22 +1,3 @@
-ul.tags {
-
-  li {
-    float:left;
-  }
-
-}
-
-.parent {
-	background-image: linear-gradient(30deg, #FF4E50, #F9D423);
-	border-radius: 3px;
-	padding: 1px;
-}
-.child {
-	background-color: #fff;
-	border-radius: 2px;
-  text-align: center;
-}
-
 .articleBody {
   h1::after {
     content: "";

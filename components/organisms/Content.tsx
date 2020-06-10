@@ -7,26 +7,33 @@ import '~/styles/article.scss'
 
 const Content: React.FC<{ article: Article }> = ({ article }) => {
   return (
-    <div className="flex justify-center">
-      <div
-        className="bg-white rounded-lg overflow-hidden w-3/4 mb-32 shadow"
-        style={{ height: 2000 }}
-      >
-        <div className="flex items-center justify-between flex-wrap">
-          <div className="w-1/3 p-2">
+    <section className="text-gray-700 body-font">
+      <div className="container mx-auto flex px-5 items-center justify-center flex-col">
+        <div className="bg-white rounded-lg overflow-hidden w-full shadow">
+          <div
+            style={{
+              width: 200,
+              marginLeft: -200,
+            }}
+          >
+            foo
+          </div>
+          <div className="flex items-center justify-between flex-wrap pl-6 pb-4">
+            {/* <div className="w-1/3 p-2">
             <div className="text-gray-700">
               <Date date={article.publishDate} />
             </div>
+          </div> */}
+            <div className="w-2/3">
+              <Tags tags={article.tags} />
+            </div>
           </div>
-          <div className="w-1/3 p-2">
-            <Tags tags={article.tags} />
+          <div className="articleBody">
+            <div dangerouslySetInnerHTML={{ __html: article.body }} />
           </div>
-        </div>
-        <div className="articleBody">
-          <div dangerouslySetInnerHTML={{ __html: article.body }} />
         </div>
       </div>
-    </div>
+    </section>
   )
 }
 

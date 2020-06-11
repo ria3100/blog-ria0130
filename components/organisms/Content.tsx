@@ -8,7 +8,7 @@ import '~/styles/article.scss'
 const Content: React.FC<{ article: Article }> = ({ article }) => {
   return (
     <section className="text-gray-700 body-font">
-      <div className="container mx-auto flex px-5 items-center justify-center flex-col">
+      <div className="container mx-auto flex items-center justify-center flex-col">
         <div className="bg-white rounded-lg overflow-hidden w-full shadow">
           <div
             style={{

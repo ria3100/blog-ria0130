@@ -5,7 +5,8 @@ import { Navigation, Mainvisual, List, Footer } from '~/components/organisms'
 import { AnimatedRoute } from '~/components/atoms'
 
 type Props = { articles: Article[] }
-const HomeTemplate: React.FC<Props> = ({ articles }) => {
+
+export const HomeTemplate: React.FC<Props> = ({ articles }) => {
   return (
     <AnimatedRoute>
       <div className="flex flex-col min-h-screen">
@@ -18,5 +19,3 @@ const HomeTemplate: React.FC<Props> = ({ articles }) => {
     </AnimatedRoute>
   )
 }
-
-export default HomeTemplate

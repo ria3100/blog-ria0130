@@ -1,6 +1,6 @@
 import * as React from 'react'
 
-const Mainvisual: React.FC = () => {
+export const Mainvisual: React.FC = () => {
   return (
     <div className="flex flex-col justify-center w-full h-80vh max-h-900 bg-gray-900">
       {/* <div
@@ -36,5 +36,3 @@ const Mainvisual: React.FC = () => {
     </div>
   )
 }
-
-export default Mainvisual

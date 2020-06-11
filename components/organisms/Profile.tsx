@@ -3,7 +3,7 @@ import Link from 'next/link'
 
 import { SectionTitle } from '~/components/atoms'
 
-const Profile: React.FC = () => {
+export const Profile: React.FC = () => {
   return (
     <section className="text-gray-700 body-font">
       <div className="container px-5 py-24 mx-auto flex flex-col">
@@ -66,5 +66,3 @@ const Profile: React.FC = () => {
     </section>
   )
 }
-
-export default Profile

@@ -4,7 +4,8 @@ import { Navigation, List, Footer } from '~/components/organisms'
 import { AnimatedRoute } from '~/components/atoms'
 
 type Props = { articles: Article[] }
-const PostTemplate: React.FC<Props> = ({ articles }) => {
+
+export const ListTemplate: React.FC<Props> = ({ articles }) => {
   return (
     <AnimatedRoute>
       <div className="flex flex-col min-h-screen">
@@ -17,5 +18,3 @@ const PostTemplate: React.FC<Props> = ({ articles }) => {
     </AnimatedRoute>
   )
 }
-
-export default PostTemplate

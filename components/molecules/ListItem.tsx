@@ -5,7 +5,8 @@ import { Tags } from '~/components/molecules'
 import { Date } from '~/components/atoms'
 
 type Props = { article: Article }
-const ListItem: React.FC<Props> = ({ article }) => {
+
+export const ListItem: React.FC<Props> = ({ article }) => {
   return (
     <div className="rounded shadow bg-white mb-8">
       <div className="px-6 py-4">
@@ -29,5 +30,3 @@ const ListItem: React.FC<Props> = ({ article }) => {
     </div>
   )
 }
-
-export default ListItem

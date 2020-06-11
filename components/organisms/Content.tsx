@@ -5,7 +5,7 @@ import { Date } from '~/components/atoms'
 
 import '~/styles/article.scss'
 
-const Content: React.FC<{ article: Article }> = ({ article }) => {
+export const Content: React.FC<{ article: Article }> = ({ article }) => {
   return (
     <section className="text-gray-700 body-font">
       <div className="container mx-auto flex items-center justify-center flex-col">
@@ -36,5 +36,3 @@ const Content: React.FC<{ article: Article }> = ({ article }) => {
     </section>
   )
 }
-
-export default Content

@@ -2,7 +2,7 @@ import * as React from 'react'
 import { useTransition, animated } from 'react-spring'
 import { useRouter } from 'next/router'
 
-const AnimatedRoute: React.FC = ({ children }) => {
+export const AnimatedRoute: React.FC = ({ children }) => {
   const router = useRouter()
 
   const transitions = useTransition(router, router => router.asPath, {
@@ -24,5 +24,3 @@ const AnimatedRoute: React.FC = ({ children }) => {
     </>
   )
 }
-
-export default AnimatedRoute

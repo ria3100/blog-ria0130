@@ -6,7 +6,8 @@ type Props = {
   og: { image: string; url: string }
   keywords?: string[]
 }
-const Meta: React.FC<Props> = ({ title, og, keywords }) => {
+
+export const Meta: React.FC<Props> = ({ title, og, keywords }) => {
   return (
     <Head>
       <title>{title}</title>
@@ -33,5 +34,3 @@ const Meta: React.FC<Props> = ({ title, og, keywords }) => {
     </Head>
   )
 }
-
-export default Meta

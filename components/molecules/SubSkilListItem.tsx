@@ -1,7 +1,8 @@
 import * as React from 'react'
 
 type Props = { name: string }
-const SkilListItem: React.FC<Props> = ({ name }) => {
+
+export const SubSkilListItem: React.FC<Props> = ({ name }) => {
   return (
     <div className="p-2 sm:w-1/4 w-full">
       <div className="flex h-full items-center">
@@ -23,5 +24,3 @@ const SkilListItem: React.FC<Props> = ({ name }) => {
     </div>
   )
 }
-
-export default SkilListItem

@@ -5,7 +5,7 @@ import { MainSkilListItem, SubSkilListItem } from '~/components/molecules'
 
 import { mainSkils, subSkils } from '~/data/skils'
 
-const SkilList: React.FC = () => {
+export const SkilList: React.FC = () => {
   return (
     <section className="text-gray-700 body-font">
       <div className="container px-5 py-24 mx-auto">
@@ -25,5 +25,3 @@ const SkilList: React.FC = () => {
     </section>
   )
 }
-
-export default SkilList

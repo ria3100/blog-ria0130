@@ -3,7 +3,8 @@ import * as React from 'react'
 import { ListItem } from '~/components/molecules'
 
 type Props = { articles: Article[] }
-const List: React.FC<Props> = ({ articles }) => {
+
+export const List: React.FC<Props> = ({ articles }) => {
   return (
     <section className="text-gray-700 body-font">
       <div className="container mx-auto flex py-24 items-center justify-center flex-col">
@@ -16,5 +17,3 @@ const List: React.FC<Props> = ({ articles }) => {
     </section>
   )
 }
-
-export default List

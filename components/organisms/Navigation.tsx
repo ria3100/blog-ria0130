@@ -1,7 +1,7 @@
 import * as React from 'react'
 import Link from 'next/link'
 
-const Navigation: React.FC = () => {
+export const Navigation: React.FC = () => {
   return (
     <header className="text-gray-400 body-font bg-gray-900">
       <div className="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
@@ -56,5 +56,3 @@ const Navigation: React.FC = () => {
     </header>
   )
 }
-
-export default Navigation

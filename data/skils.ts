@@ -1,11 +1,11 @@
 export const mainSkils = [
-  { label: 'TypeScript', img: '' },
-  { label: 'JavaScript', img: '' },
-  { label: 'Node.js', img: '' },
-  { label: 'React', img: '' },
-  { label: 'Next.js', img: '' },
-  { label: 'Vue.js', img: '' },
-  { label: 'webpack', img: '' },
+  { name: 'TypeScript', img: '/material-icons/typescript.svg' },
+  { name: 'JavaScript', img: '/material-icons/javascript.svg' },
+  { name: 'Node.js', img: '/material-icons/nodejs.svg' },
+  { name: 'React', img: '/material-icons/react.svg' },
+  { name: 'Next.js', img: '/icons/nextjs.svg' },
+  { name: 'Vue.js', img: '/material-icons/vue.svg' },
+  { name: 'webpack', img: '/material-icons/webpack.svg' },
 ] as const
 
 export const subSkils = [

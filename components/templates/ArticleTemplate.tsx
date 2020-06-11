@@ -10,7 +10,7 @@ export const ArticleTemplate: React.FC<Props> = ({ article }) => {
     <AnimatedRoute>
       <div className="flex flex-col min-h-screen">
         <div className="relative">
-          <div className="absolute w-full h-40vh max-h-900 bg-gray-900 -z-1" />
+          <div className="absolute w-full h-480px max-h-900 bg-gray-900 -z-1" />
           <Navigation />
           <Title title={article.title} date={article.publishDate} />
           <Content article={article} />

@@ -31,7 +31,6 @@ const withMDX = require('@zeit/next-mdx')({
 module.exports = withMDX(
   withSass({
     pageExtensions: ['tsx'],
-    exportTrailingSlash: true,
     exportPathMap: async (_, { dev }) => {
       const staticPagePaths = {
         '/': { page: '/' },

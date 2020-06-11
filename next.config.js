@@ -17,11 +17,11 @@ const withMDX = require('@zeit/next-mdx')({
         addClasses,
         {
           // postcss.config.js の whitelist にも追加すること
-          pre: 'shiki bg-gray-900 p-6',
-          p: 'p-6',
-          h1: 'text-4xl p-6',
-          h2: 'text-3xl p-6',
-          h3: 'text-xl p-6',
+          pre: 'shiki bg-gray-900 p-4 mb-6',
+          p: 'px-4 mb-6',
+          h1: 'text-3xl px-4 mb-6',
+          h2: 'text-2xl px-4 mb-6',
+          h3: 'text-xl px-4 mb-6',
         },
       ],
     ],

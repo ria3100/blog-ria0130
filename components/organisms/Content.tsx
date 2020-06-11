@@ -9,7 +9,7 @@ export const Content: React.FC<{ article: Article }> = ({ article }) => {
   return (
     <section className="text-gray-700 body-font">
       <div className="container mx-auto flex items-center justify-center flex-col">
-        <div className="bg-white rounded-lg overflow-hidden w-full shadow">
+        <div className="bg-white rounded-lg overflow-hidden w-full shadow pb-8">
           <div
             style={{
               width: 200,

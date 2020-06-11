@@ -18,8 +18,14 @@ export const SkilList: React.FC = () => {
 
         <div className="flex flex-wrap w-full sm:mb-2 text-sm mt-8">
           {subSkils.map(name => (
-            <SubSkilListItem name={name} />
+            <SubSkilListItem name={name} key={name} />
           ))}
+
+          <div className="p-2 sm:w-1/4 w-1/2">
+            <div className="flex h-full items-center">
+              <span className="title-font font-medium">etc.</span>
+            </div>
+          </div>
         </div>
       </div>
     </section>

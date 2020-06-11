@@ -1,13 +1,11 @@
-.articleBody {
-  h1::after {
-    content: "";
-    width: 100%;
-    height: 4px;
-    display: block;
-    background-image: linear-gradient(30deg, #FF4E50, #F9D423);
-  }
+@font-face {
+  font-family: 'JetBrainsMono';
+  src: url('/JetBrainsMono-Regular.woff2') format('woff2');
+}
 
-  h2::after {
+.articleBody {
+
+  h1::after {
     content: "";
     width: 100%;
     height: 2px;
@@ -15,8 +13,15 @@
     background-image: linear-gradient(120deg, #2BC0E4, #EAECC6);
   }
 
-  h3::before {
-    content: "#";
-    margin-right: 8px;
+  pre {
+    overflow-x: scroll;
+
+    code {
+      font-family: JetBrainsMono;
+      font-size: 14px;
+      line-height: 16px;
+    }
+
   }
+
 }

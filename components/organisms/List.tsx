@@ -7,7 +7,7 @@ type Props = { articles: Article[] }
 export const List: React.FC<Props> = ({ articles }) => {
   return (
     <section className="text-gray-700 body-font">
-      <div className="container mx-auto flex py-24 items-center justify-center flex-col">
+      <div className="container mx-auto flex items-center justify-center flex-col">
         <div className="flex flex-col mx-auto w-full my-16">
           {articles.map((article, i) => (
             <ListItem article={article} key={i} />

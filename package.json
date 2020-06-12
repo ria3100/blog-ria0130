@@ -7,7 +7,9 @@
     "dev": "next",
     "build": "next build",
     "start": "next start",
-    "export": "next export"
+    "export": "next build && next export",
+    "serve": "yarn export && firebase serve --host 0.0.0.0",
+    "deploy": "yarn export && firebase deploy"
   },
   "dependencies": {
     "@mdx-js/loader": "^1.5.8",

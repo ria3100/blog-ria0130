@@ -10,7 +10,10 @@ export const HomeTemplate: React.FC<Props> = ({ articles }) => {
   return (
     <AnimatedRoute>
       <div className="flex flex-col min-h-screen">
-        <Navigation />
+        <div className="absolute w-full">
+          <Navigation />
+        </div>
+
         <Mainvisual />
 
         <List articles={articles} />

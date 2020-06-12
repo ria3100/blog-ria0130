@@ -11,7 +11,9 @@ export const ArticleTemplate: React.FC<Props> = ({ article }) => {
       <div className="flex flex-col min-h-screen">
         <div className="relative">
           <div className="absolute w-full h-480px max-h-900 bg-gray-900 -z-1" />
-          <Navigation />
+          <div className="absolute w-full">
+            <Navigation />
+          </div>
           <Title title={article.title} date={article.publishDate} />
           <Content article={article} />
         </div>

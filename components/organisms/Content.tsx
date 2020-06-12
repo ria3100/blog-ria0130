@@ -3,8 +3,6 @@ import * as React from 'react'
 import { Tags } from '~/components/molecules'
 import { Date } from '~/components/atoms'
 
-import '~/styles/article.scss'
-
 export const Content: React.FC<{ article: Article }> = ({ article }) => {
   return (
     <section className="text-gray-700 body-font">

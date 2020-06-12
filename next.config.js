@@ -1,8 +1,6 @@
 const path = require('path')
 const fs = require('fs')
 
-const withSass = require('@zeit/next-sass')
-
 const shiki = require('rehype-shiki')
 const addClasses = require('rehype-add-classes')
 
@@ -28,33 +26,34 @@ const withMDX = require('@zeit/next-mdx')({
   },
 })
 
-module.exports = withMDX(
-  withSass({
-    pageExtensions: ['tsx'],
-    exportPathMap: async (_, { dev }) => {
-      const staticPagePaths = {
-        '/': { page: '/' },
-        '/article/list': { page: '/article/list' },
-        '/about': { page: '/about' },
+module.exports = withMDX({
+  pageExtensions: ['tsx'],
+  exportPathMap: async (_, { dev }) => {
+    const staticPagePaths = {
+      '/': { page: '/' },
+      '/article/list': { page: '/article/list' },
+      '/about': { page: '/about' },
+    }
+
+    if (dev) return staticPagePaths
+
+    const articles = fs.readdirSync('./contents')
+
+    const paths = articles.reduce((acc, article) => {
+      acc[`/article/${article}`] = {
+        page: '/article/[slag]',
+        query: { slag: article },
       }
+      return acc
+    }, staticPagePaths)
 
-      if (dev) return staticPagePaths
-
-      const articles = fs.readdirSync('./contents')
-
-      const paths = articles.reduce((acc, article) => {
-        acc[`/article/${article}`] = {
-          page: '/article/[slag]',
-          query: { slag: article },
-        }
-        return acc
-      }, staticPagePaths)
-
-      return paths
-    },
-    webpack: config => {
-      config.resolve.alias['~'] = path.resolve(__dirname)
-      return config
-    },
-  })
-)
+    return paths
+  },
+  webpack: config => {
+    config.resolve.alias['~'] = path.resolve(__dirname)
+    return config
+  },
+  sassOptions: {
+    includePaths: [path.join(__dirname, 'styles')],
+  },
+})

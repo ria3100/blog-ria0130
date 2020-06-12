@@ -9,7 +9,7 @@ export const Title: React.FC<Props> = ({ title, date }) => {
         {title}
       </h1>
 
-      <div className="font-product-sans pt-8 tracking-wide text-center text-gray-100">
+      <div className="font-product-sans pt-2 lg:pt-8 tracking-wide text-center text-gray-100">
         {date}
       </div>
     </div>

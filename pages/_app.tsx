@@ -1,7 +1,8 @@
 import React from 'react'
 import { NextComponentType, NextPageContext } from 'next'
 
-import '../styles/main.scss'
+import '~/styles/main.scss'
+import '~/styles/article.scss'
 
 type Props = {
   Component: NextComponentType<NextPageContext, any, {}>

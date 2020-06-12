@@ -4,6 +4,14 @@ const fs = require('fs')
 const shiki = require('rehype-shiki')
 const addClasses = require('rehype-add-classes')
 
+const additions = {
+  pre: 'shiki bg-gray-900 p-4 mb-6',
+  p: 'px-4 mb-6',
+  h1: 'text-3xl px-4 mb-6',
+  h2: 'text-2xl px-4 mb-6',
+  h3: 'text-xl px-4 mb-6',
+}
+
 const withMDX = require('@zeit/next-mdx')({
   // parse mdx files
   extension: /\.mdx?$/,
@@ -11,17 +19,7 @@ const withMDX = require('@zeit/next-mdx')({
     remarkPlugins: [],
     rehypePlugins: [
       [shiki, { theme: 'monokai' }],
-      [
-        addClasses,
-        {
-          // postcss.config.js の whitelist にも追加すること
-          pre: 'shiki bg-gray-900 p-4 mb-6',
-          p: 'px-4 mb-6',
-          h1: 'text-3xl px-4 mb-6',
-          h2: 'text-2xl px-4 mb-6',
-          h3: 'text-xl px-4 mb-6',
-        },
-      ],
+      [addClasses, additions],
     ],
   },
 })
@@ -56,4 +54,6 @@ module.exports = withMDX({
   sassOptions: {
     includePaths: [path.join(__dirname, 'styles')],
   },
+  // postcss.config.js でパースするためだけのプロパティ
+  purgecssWhitelist: additions,
 })

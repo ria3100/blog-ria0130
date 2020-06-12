@@ -1,19 +1,18 @@
+const config = require('./next.config')
+
+const classList = config.purgecssWhitelist
+const whitelist = Object.keys(classList).reduce((acc, key) => {
+  return Array.from(new Set([...acc, ...classList[key].split(' ')]))
+}, [])
+
+// 使われてないスタイルを事前ビルドするとHMRで開発する際に不便なので production のみに
 const isProduction = [
   [
     '@fullhuman/postcss-purgecss',
     {
       content: ['./pages/**/*.tsx', './components/**/*.tsx'],
       defaultExtractor: content => content.match(/[\w-/:]+(?<!:)/g) || [],
-      whitelist: [
-        'shiki',
-        'bg-gray-900',
-        'p-4',
-        'mb-6',
-        'px-4',
-        'text-3xl',
-        'text-2xl',
-        'text-xl',
-      ],
+      whitelist,
     },
   ],
   ['cssnano', { preset: 'default' }],

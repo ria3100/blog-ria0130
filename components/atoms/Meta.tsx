@@ -10,7 +10,7 @@ type Props = {
 export const Meta: React.FC<Props> = ({ title, og, keywords }) => {
   return (
     <Head>
-      <title>{title}</title>
+      <title>{title && title + ' | '}Ria</title>
       <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       <meta charSet="UTF-8" />
       <meta

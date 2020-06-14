@@ -8,8 +8,13 @@ import { getArticles } from '~/utils/article'
 type Props = { articles: Article[] }
 const Home: NextPage<Props> = ({ articles }) => {
   const meta = {
-    title: '',
-    og: { image: '', url: '' },
+    title: 'Ria',
+    og: {
+      type: 'website',
+      image: '',
+      path: '',
+      description: 'Front-end Engineer.',
+    },
   }
 
   return (

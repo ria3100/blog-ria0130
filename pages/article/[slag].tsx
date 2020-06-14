@@ -10,7 +10,12 @@ type Props = { article: Article }
 const Article: React.FC<Props> = ({ article }) => {
   const meta = {
     title: article.title,
-    og: { image: '', url: article.title },
+    og: {
+      type: 'article',
+      image: '',
+      path: `/article/${article.fullUrlPath}`,
+      description: '',
+    },
     keywords: article.tags,
   }
 

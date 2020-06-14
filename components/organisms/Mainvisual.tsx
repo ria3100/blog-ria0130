@@ -2,7 +2,7 @@ import * as React from 'react'
 
 export const Mainvisual: React.FC = () => {
   return (
-    <div className="flex flex-col justify-center w-full h-60vh lg:h-80vh max-h-900 bg-gray-900">
+    <div className="flex flex-col justify-center w-full h-60vh min-h-400 lg:h-80vh max-h-900 bg-gray-900">
       {/* <div
         className="bg-bora-bora text-white font-bold py-4 px-6 w-1/3 rounded m-6 absolute"
         style={{

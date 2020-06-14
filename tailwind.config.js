@@ -45,6 +45,9 @@ module.exports = {
         '60vh': '60vh',
         '80vh': '80vh',
       },
+      minHeight: {
+        '400': '400px',
+      },
       maxHeight: {
         '900': '900px',
       },

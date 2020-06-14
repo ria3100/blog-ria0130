@@ -24,7 +24,7 @@ export const Meta: React.FC<Props> = ({ title, og, keywords }) => {
       <link rel="shortcut icon" type="image/x-icon" href="/icons/icon512.png" />
       <link rel="apple-touch-icon" type="image/png" href="/icons/icon512.png" />
       <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:title" content={title} />
+      <meta name="twitter:title" content={title ?? 'Ria'} />
       <meta name="twitter:description" content={og.description} />
       <meta
         name="twitter:image:src"

@@ -3,7 +3,7 @@ import { NamedCodeBlock } from '~/components/atoms'
 export const meta = {
   title: '新しいブログを公開しました。',
   tags: ['React', 'Next.js', 'MDX', 'TypeScript', 'Tailwind CSS'],
-  publishDate: '2020-06-20',
+  publishDate: '2020-06-14',
   modifiedDate: false,
   seoDescription: 'Next.js / MDXでブログ構築しました。',
   exclude: false
@@ -13,7 +13,7 @@ export const meta = {
 技術スタックは React, Next.js, MDX, TypeScript, Tailwind CSS 辺りを使っています。
 
 Twitter の他にもアウトプットする場が欲しくて作りました。
-Qiitaに時々記事を書いてたのでそっちに力を入れても良かったんですが、運営への不信感と全体的に記事の質が下がったと感じることが増えてきて検索にかかった時にしか開かなくなってしましました。
+Qiitaに時々記事を書いてたのでそっちに力を入れても良かったんですが、運営への不信感と全体的に記事の質が下がったと感じることが増えてきて検索にかかった時にしか開かなくなってしまいました。
 
 ここでは日々詰まったことや学んだことをアウトプットしていくつもりです。
 
@@ -34,7 +34,7 @@ Next.js で SSG (静的サイトジェネレータ) の機能を使って、記�
 これは Markdown 形式のなかで JavaScript や JSX が書けるもので記事のメタデータを JavaScript で管理しています。
 JSXコンポーネントの読み込みも可能です。
 
-<NamedCodeBlock filename="/contents/page-path/index.mdx">
+<NamedCodeBlock filename="/contents/foo/index.mdx">
 
 ``` typescript
 import { Foo } from '~/components'
@@ -42,7 +42,7 @@ import { Foo } from '~/components'
 export const meta = {
   title: '記事タイトル',
   tags: ['タグ1', 'タグ2', 'タグ2'],
-  publishDate: '2020-06-20',
+  publishDate: '2020-06-14',
   modifiedDate: false,
   seoDescription: 'SEO/記事一覧用のサマリーテキスト',
   exclude: false
@@ -59,7 +59,7 @@ export const meta = {
 
 </NamedCodeBlock>
 
-こんなファイルを用意するとファイルパスと同じパス `http://ria0130.dev/article/page-path` で公開されます。
+こんなファイルを用意するとファイルパスと同じパス `http://ria0130.dev/article/foo` で公開されます。
 
 # これから
 

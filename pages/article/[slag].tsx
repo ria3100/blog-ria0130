@@ -8,11 +8,13 @@ import { Meta } from '~/components/atoms'
 
 type Props = { article: Article }
 const Article: React.FC<Props> = ({ article }) => {
+  const image = `https://res.cloudinary.com/dvtfyasu2/image/upload/l_text:Sawarabi%20Gothic_50:${article.title},co_rgb:f1f2ef,w_600,c_fit/v1592197831/ntBQEcgB_xdsefh.jpg`
+
   const meta = {
     title: article.title,
     og: {
       type: 'article',
-      image: '',
+      image,
       path: `/article/${article.fullUrlPath}`,
       description: '',
     },

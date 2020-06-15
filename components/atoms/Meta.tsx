@@ -9,6 +9,7 @@ type Props = {
 
 export const Meta: React.FC<Props> = ({ title, og, keywords }) => {
   const getFullPath = (path: string) => `https://${process.env.HOST}${path}`
+  const defaultCard = getFullPath('/site_card.png')
 
   return (
     <Head>
@@ -26,18 +27,12 @@ export const Meta: React.FC<Props> = ({ title, og, keywords }) => {
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content={title ?? 'Ria'} />
       <meta name="twitter:description" content={og.description} />
-      <meta
-        name="twitter:image:src"
-        content={getFullPath(og.image || '/site_card.png')}
-      />
+      <meta name="twitter:image:src" content={og.image || defaultCard} />
       <meta content="@_Ria0130" name="twitter:site" />
       <meta content="@_Ria0130" name="twitter:creator" />
       <meta property="og:type" content={og.type} />
       <meta property="og:title" content={title} />
-      <meta
-        property="og:image"
-        content={getFullPath(og.image || '/site_card.png')}
-      />
+      <meta property="og:image" content={og.image || defaultCard} />
       <meta property="og:description" content={og.description} />
       <meta property="og:url" content={getFullPath(og.path)} />
       <meta property="og:site_name" content="Ria" />

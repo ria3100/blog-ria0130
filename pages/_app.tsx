@@ -14,7 +14,6 @@ type Props = {
 const MyApp: React.FC<Props> = ({ Component, pageProps }) => {
   const router = useRouter()
 
-  console.log(process.env.NEXT_PUBLIC_FOO)
   const isProduction = process.env.NODE_ENV === 'production'
 
   React.useEffect(() => {

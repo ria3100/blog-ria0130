@@ -10,6 +10,7 @@ const additions = {
   h1: 'text-3xl px-4 mb-6',
   h2: 'text-2xl px-4 mb-6',
   h3: 'text-xl px-4 mb-6',
+  ul: 'px-4 mb-6',
 }
 
 const withMDX = require('@zeit/next-mdx')({

@@ -1,5 +1,4 @@
 import * as React from 'react'
-import Link from 'next/link'
 
 import { SectionTitle } from '~/components/atoms'
 

@@ -8,7 +8,8 @@ type Props = {
 }
 
 export const Meta: React.FC<Props> = ({ title, og, keywords }) => {
-  const getFullPath = (path: string) => `https://${process.env.HOST}${path}`
+  const getFullPath = (path: string) =>
+    `https://${process.env.NEXT_PUBLIC_HOST}${path}`
   const defaultCard = getFullPath('/site_card.png')
 
   return (

@@ -1,6 +1,6 @@
 import * as React from 'react'
 
-import { Tags, ArticleFooter } from '~/components/molecules'
+import { Tags, ArticleFooter, ShareButtons } from '~/components/molecules'
 
 export const Content: React.FC<{ article: Article }> = ({ article }) => {
   return (
@@ -15,6 +15,7 @@ export const Content: React.FC<{ article: Article }> = ({ article }) => {
           <div className="articleBody leading-relaxed pb-8">
             <div dangerouslySetInnerHTML={{ __html: article.body }} />
           </div>
+          <ShareButtons title={article.title} path={article.fullUrlPath} />
           <ArticleFooter />
         </div>
       </div>

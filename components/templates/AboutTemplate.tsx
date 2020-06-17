@@ -1,7 +1,7 @@
 import * as React from 'react'
 
 import { Navigation, Footer, SkilList } from '~/components/organisms'
-import { Profile, ThisSite } from '~/components/molecules'
+import { Profile, ThisSite, Contact } from '~/components/molecules'
 import { AnimatedRoute } from '~/components/atoms'
 
 export const AboutTemplate: React.FC = () => {
@@ -13,6 +13,7 @@ export const AboutTemplate: React.FC = () => {
         <Profile />
         <SkilList />
         <ThisSite />
+        <Contact />
       </div>
       <Footer />
     </AnimatedRoute>

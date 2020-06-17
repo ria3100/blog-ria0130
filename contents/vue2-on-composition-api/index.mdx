@@ -1,0 +1,63 @@
+import { NamedCodeBlock } from '~/components/atoms'
+
+export const meta = {
+  title: 'Vue3 で実装予定の Compositon API を使って TypeScript に対応する',
+  tags: ['Vue.js', 'TypeScript', 'Composition API', 'Vuex'],
+  publishDate: '2020-06-20',
+  modifiedDate: false,
+  seoDescription: '',
+  exclude: false
+}
+
+Vue3 のリリースが 2020 Q2 に伸びていました。
+普段 React + TypeScript で開発しているので Vue3 の Composition API や TypeScript 対応に期待していて、
+SFCがエディタと相性悪い、TypeScriptで補完が効かないと悩まされてたあの頃がもう昔のことのように感じます。
+
+Vue3でリリース予定に機能には Composition API, Fragment, Portal, Suspence などがあり、  
+Composition API は React Hooks ライクな機能で Fragment と Suspence も React で実装されている機能なので
+
+そんな Vue3 リリース間近に Vue を書く機会に当たってしまったので Vue2 向けに公開されている Composition API を入れて Vue3 を先取りするための環境を作っていきます。
+
+# Composition API とは
+
+<NamedCodeBlock filename="従来のコンポーネント定義">
+
+```html
+<script lang="ts">
+import Vue from 'vue'
+
+export default Vue.extend({
+  created() {
+    console.log('created')
+  }
+})
+</script>
+```
+
+</NamedCodeBlock>
+
+<NamedCodeBlock filename="Composition API を使ったコンポーネント定義">
+
+```html
+<script lang="ts">
+import { defineComponent } from '@vue/composition-api'
+
+export default defineComponent({
+  setup() {
+    console.log('setup')
+  }
+})
+</script>
+```
+
+</NamedCodeBlock>
+
+# まとめ
+無事 TypeScript に完全対応できました。
+TypeScript と相性が悪いと言われ続けてきた Vuex は direct-vuex で、 Template は VS Code なら Vetur で型補完が効くようになり不便を感じることはなくなりました。
+Composition API も React Hooks に近い書き方ができるので React 経験が長い自分には馴染みやすいものでした。
+React Hooks が公開された直後にEvan氏が Vue Hooks をテスト実装した過去もありフロントエンド界隈が
+
+この記事のコードは GitHub で公開しています。
+
+https://github.com/ria3100/vue2-composition-api-example

@@ -26,9 +26,6 @@ const withMDX = require('@zeit/next-mdx')({
 })
 
 module.exports = withMDX({
-  env: {
-    HOST: 'ria0130.dev',
-  },
   pageExtensions: ['tsx'],
   // Firebase 環境で必要
   exportTrailingSlash: true,

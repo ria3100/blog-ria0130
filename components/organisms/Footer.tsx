@@ -27,14 +27,14 @@ export const Footer: React.FC = () => {
             href="https://twitter.com/_ria0130"
             target="_blank"
           >
-            <i className="fab fa-twitter"></i>
+            <i className="fab fa-twitter" />
           </a>
           <a
             className="ml-3 text-gray-500 hover:text-gray-700"
             href="https://github.com/ria3100"
             target="_blank"
           >
-            <i className="fab fa-github"></i>
+            <i className="fab fa-github" />
           </a>
         </span>
       </div>

@@ -1,8 +1,13 @@
 import * as React from 'react'
 
 import { Tags, ArticleFooter, ShareButtons } from '~/components/molecules'
+import { Like } from '~/components/atoms'
+
+import { useLike } from '~/hooks/like'
 
 export const Content: React.FC<{ article: Article }> = ({ article }) => {
+  const { liked, toggleLike } = useLike(article.fullUrlPath)
+
   return (
     <section className="text-gray-700 body-font">
       <div className="container mx-auto flex items-center justify-center flex-col">
@@ -15,6 +20,7 @@ export const Content: React.FC<{ article: Article }> = ({ article }) => {
           <div className="articleBody leading-relaxed pb-8">
             <div dangerouslySetInnerHTML={{ __html: article.body }} />
           </div>
+          <Like toggleLike={toggleLike} liked={liked} />
           <ShareButtons title={article.title} path={article.fullUrlPath} />
           <ArticleFooter />
         </div>

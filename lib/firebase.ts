@@ -1,4 +1,5 @@
 import * as firebase from 'firebase/app'
+import 'firebase/auth'
 import 'firebase/firestore'
 import 'firebase/analytics'
 
@@ -18,6 +19,9 @@ if (typeof window !== 'undefined' && !firebase.apps.length) {
   firebase.initializeApp(clientCredentials)
 
   if (isProduction) firebase.analytics()
+
+  // いいねボタンのための匿名ログイン
+  firebase.auth().signInAnonymously()
 }
 
 export { firebase }

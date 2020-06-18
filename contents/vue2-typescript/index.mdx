@@ -1,7 +1,7 @@
 import { NamedCodeBlock } from '~/components/atoms'
 
 export const meta = {
-  title: 'Vue3 を先取り Compositon API と direct-vuex を使って TypeScript に対応する',
+  title: 'Compositon API と direct-vuex を使って TypeScript に対応する',
   tags: ['Vue.js', 'TypeScript', 'Composition API', 'Vuex'],
   publishDate: '2020-06-20',
   modifiedDate: false,
@@ -20,8 +20,15 @@ Composition API は React Hooks ライクな機能でコンポーネントから
 
 # Composition API とは
 
-実は公式から Vue2 向けの Composition API が公開されていて Vue3 を待たなくても使えます。
-npm もしくは yarn から @vue/composition-api をインストールしてください。
+コンポーネントとロジックの分離、TypeScriptサポートを念頭に置かれた Vue3 で予定されている新しいコンポーネント設計です。
+公式から Vue2 向けの Composition API が公開されていて Vue3 を待たなくても使えます。
+
+公式ドキュメントが分かりやすくまとまっているので詳細を知りたいかたはそちらをご覧ください。
+2020/06/18 時点では英語と中国語しかありませんが翻訳でも十分理解できると思います。
+
+https://composition-api.vuejs.org/
+
+まずは npm もしくは yarn から @vue/composition-api をインストールしてください。
 
 ```bash
 npm install @vue/composition-api
@@ -30,7 +37,7 @@ yarn add @vue/composition-api
 
 <NamedCodeBlock filename="従来のコンポーネント定義">
 
-```html
+```vue
 <script lang="ts">
 import Vue from 'vue'
 
@@ -46,7 +53,7 @@ export default Vue.extend({
 
 <NamedCodeBlock filename="Composition API を使ったコンポーネント定義">
 
-```html
+```vue
 <script lang="ts">
 import { defineComponent } from '@vue/composition-api'
 
@@ -65,18 +72,50 @@ setup ひとつになったことで data で定義した値の型が created �
 
 ## リアクティブな値
 
-reactive, ref
+リアクティブな値を扱うには reactive や ref を使う必要があります。
+ここで言うリアクティブな値とは data に書いていた state のことで v-model や methods などで更新されリアクティブに View に反映される値のことです。
+setup() の戻り値に関数を返すと methods と同様に template 内で @click などのイベントに使えます。
 
-computed
-deep
+```vue
+<template>
+  <button @click="increment">
+    Count is: {{ state.count }}
+    Double is: {{ state.double }}
+  </button>
+</template>
 
-の説明を書く
+<script lang="ts">
+import { defineComponent, reactive, computed, watch } from '@vue/composition-api'
 
-## ライフサイクルメソッド
+export default defineComponent({
+  setup() {
+    const state = reactive({
+      count: 0,
+    })
 
-onBeforeMount, onBeforeUpdate, onBeforeUnmount, onUnmounted, onErrorCaptured
+    const double = computed(() => state.count * 2)
 
-の説明を書く
+    const increment = () => {
+      state.count++
+    }
+
+    watch(
+      () => state,
+      () => {
+        console.log('watch', state)
+      },
+      { deep: true }
+    )
+
+    return {
+      state,
+      increment
+    }
+  }
+})
+</script>
+```
+
 
 # direct-vuex を使ったTodoアプリの実装
 
@@ -316,7 +355,7 @@ export default defineComponent({
 
 
 # まとめ
-無事 TypeScript に完全対応できました。
+無事 TypeScript に対応できました。
 Vuex は direct-vuex で、 Template は VS Code なら Vetur で型補完が効くようになり不便を感じることはなくなりました。
 TypeScript 対応にフォーカスして解説しましたが、Composition API は React Hooks に近い書き方ができるので React 経験が長い自分には馴染みやすいものでした。
 過去に React Hooks が公開された直後 Evan氏が Vue Hooks をテスト実装したこともありそれぞれの良い部分を吸収してるように感じます。

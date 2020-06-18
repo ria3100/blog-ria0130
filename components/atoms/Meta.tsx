@@ -19,10 +19,6 @@ export const Meta: React.FC<Props> = ({ title, description, og, keywords }) => {
       <meta name="description" content={description}></meta>
       <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       <meta charSet="UTF-8" />
-      <meta
-        content="width=device-width,initial-scale=1,shrink-to-fit=no"
-        name="viewport"
-      />
       <meta content="#272821" name="theme-color" />
       <link href="/manifest.json" rel="manifest" />
       <link rel="shortcut icon" type="image/x-icon" href="/icons/icon512.png" />

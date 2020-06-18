@@ -24,7 +24,7 @@ export const Like: React.FC<Props> = ({ toggleLike, liked }) => {
             <g
               id="Group"
               fill="none"
-              fill-rule="evenodd"
+              fillRule="evenodd"
               transform="translate(467 392)"
             >
               <path

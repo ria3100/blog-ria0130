@@ -21,8 +21,6 @@ module.exports = {
         '7rem': '7rem',
       },
       fontFamily: {
-        'product-sans': ['Product Sans', 'sans-serif'],
-        lato: ['Lato', 'sans-serif'],
         body: [
           'BlinkMacSystemFont',
           '-apple-system',
@@ -38,6 +36,12 @@ module.exports = {
           'Arial',
           'sans-serif',
         ],
+      },
+      width: {
+        '80px': '80px',
+        '140px': '140px',
+        '280px': '280px',
+        '400px': '400px',
       },
       height: {
         '400px': '400px',

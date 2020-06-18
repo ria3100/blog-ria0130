@@ -25,14 +25,17 @@ export const Mainvisual: React.FC = () => {
           transform: 'rotate(-45deg)',
         }}
       /> */}
-      <h1 className="font-product-sans font-bold text-6xl lg:text-7rem tracking-wide text-center text-gray-100">
-        Ria
-      </h1>
-      <p className="font-lato font-light text-sm lg:text-xl tracking-wide text-center text-gray-100">
-        Front-end Engineer.
-        <br />
-        Full-stack JavaScript / TypeScript Developer.
-      </p>
+
+      <div className="pointer-events-none">
+        <img
+          className="mx-auto w-80px lg:w-140px mb-8"
+          src="/mainvisual/ria.svg"
+        />
+        <img
+          className="mx-auto w-280px lg:w-400px"
+          src="/mainvisual/caption.svg"
+        />
+      </div>
     </div>
   )
 }

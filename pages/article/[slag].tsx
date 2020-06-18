@@ -12,11 +12,11 @@ const Article: React.FC<Props> = ({ article }) => {
 
   const meta = {
     title: article.title,
+    description: article.seoDescription,
     og: {
       type: 'article',
       image,
       path: `/article/${article.fullUrlPath}`,
-      description: '',
     },
     keywords: article.tags,
   }

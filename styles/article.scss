@@ -62,12 +62,12 @@ svg {
     opacity: 1;
     transition: .1s all .3s;
 
-    #oval1  {
+    .oval1  {
       transform: scale(0) translate(0, -30px);
       transform-origin: 0 0 0;
       transition: .5s transform .3s;
     }
-    #oval2  {
+    .oval2  {
       transform: scale(0) translate(10px, -50px);
       transform-origin: 0 0 0;
       transition: 1.5s transform .3s;
@@ -78,13 +78,13 @@ svg {
     opacity: 1;
     transition: .1s all .3s;
 
-    #oval1 {
+    .oval1 {
       transform: scale(0) translate(30px, -15px);
 
       transform-origin: 0 0 0;
       transition: .5s transform .3s;
       }
-    #oval2{
+    .oval2{
       transform: scale(0) translate(60px, -15px);
 
       transform-origin: 0 0 0;
@@ -96,12 +96,12 @@ svg {
     opacity: 1;
     transition: .1s all .3s;
 
-    #oval1 {
+    .oval1 {
       transform: scale(0) translate(30px, 0px);
       transform-origin: 0 0 0;
       transition: .5s transform .3s;
     }
-    #oval2 {
+    .oval2 {
       transform: scale(0) translate(60px, 10px);
       transform-origin: 0 0 0;
       transition: 1.5s transform .3s;
@@ -112,12 +112,12 @@ svg {
     opacity: 1;
     transition: .1s all .3s;
 
-    #oval1 {
+    .oval1 {
       transform: scale(0) translate(30px, 15px);
       transform-origin: 0 0 0;
       transition: .5s transform .3s;
     }
-    #oval2 {
+    .oval2 {
       transform: scale(0) translate(40px, 50px);
       transform-origin: 0 0 0;
       transition: 1.5s transform .3s;
@@ -128,12 +128,12 @@ svg {
     opacity: 1;
     transition: .1s all .3s;
 
-    #oval1 {
+    .oval1 {
       transform: scale(0) translate(-10px, 20px);
       transform-origin: 0 0 0;
       transition: .5s transform .3s;
     }
-    #oval2 {
+    .oval2 {
       transform: scale(0) translate(-60px, 30px);
       transform-origin: 0 0 0;
       transition: 1.5s transform .3s;
@@ -144,12 +144,12 @@ svg {
     opacity: 1;
     transition: .1s all .3s;
 
-    #oval1 {
+    .oval1 {
       transform: scale(0) translate(-30px, 0px);
       transform-origin: 0 0 0;
       transition: .5s transform .3s;
     }
-    #oval2 {
+    .oval2 {
       transform: scale(0) translate(-60px, -5px);
       transform-origin: 0 0 0;
       transition: 1.5s transform .3s;
@@ -160,12 +160,12 @@ svg {
     opacity: 1;
     transition: .1s all .3s;
 
-    #oval1 {
+    .oval1 {
       transform: scale(0) translate(-30px, -15px);
       transform-origin: 0 0 0;
       transition: .5s transform .3s;
     }
-    #oval2 {
+    .oval2 {
       transform: scale(0) translate(-55px, -30px);
       transform-origin: 0 0 0;
       transition: 1.5s transform .3s;

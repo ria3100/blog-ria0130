@@ -9,7 +9,8 @@ type Props = { articles: any[] }
 const List: React.FC<Props> = ({ articles }) => {
   const meta = {
     title: 'List',
-    og: { type: 'website', image: '', path: '/article/list', description: '' },
+    description: '記事の一覧',
+    og: { type: 'website', image: '', path: '/article/list' },
   }
 
   return (

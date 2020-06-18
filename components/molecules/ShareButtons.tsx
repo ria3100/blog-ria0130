@@ -13,10 +13,13 @@ export const ShareButtons: React.FC<Props> = ({ title, path }) => {
     <div className="px-4 mb-8">
       <a
         href={`https://twitter.com/share?url=${url}&via=${twitterId}&related=${twitterId}&text=${title}`}
-        rel="nofollow"
         target="_blank"
+        rel="noreferrer"
       >
-        <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mr-4">
+        <button
+          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mr-4"
+          aria-label="shate twitter"
+        >
           <i className="fab fa-twitter" />
         </button>
       </a>
@@ -24,9 +27,12 @@ export const ShareButtons: React.FC<Props> = ({ title, path }) => {
       <a
         href={`http://b.hatena.ne.jp/add?mode=confirm&url=${url}&title=${title}`}
         target="_blank"
-        rel="nofollow"
+        rel="noreferrer"
       >
-        <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mr-4">
+        <button
+          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mr-4"
+          aria-label="shate hatena"
+        >
           <i className="fab fa-hatena" />
         </button>
       </a>

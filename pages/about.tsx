@@ -6,7 +6,8 @@ import { Meta } from '~/components/atoms'
 const About: NextPage = () => {
   const meta = {
     title: 'About',
-    og: { type: 'website', image: '', path: '/about', description: '' },
+    description: 'このサイトについて',
+    og: { type: 'website', image: '', path: '/about' },
   }
 
   return (

@@ -20,7 +20,7 @@ export const Navigation: React.FC = () => {
         {/* center */}
         <Link href="/">
           <a className="flex w-1/3 title-font font-medium items-center text-gray-900 justify-center">
-            <img src="/icons/logo.svg" className="w-10 h-10" />
+            <img src="/icons/logo.svg" className="w-10 h-10" alt="site logo" />
           </a>
         </Link>
 
@@ -33,6 +33,7 @@ export const Navigation: React.FC = () => {
                   className="ml-3 hover:text-gray-200"
                   href="https://twitter.com/_ria0130"
                   target="_blank"
+                  rel="noreferrer"
                 >
                   <i className="fab fa-twitter"></i>
                 </a>
@@ -40,6 +41,7 @@ export const Navigation: React.FC = () => {
                   className="ml-3 hover:text-gray-200"
                   href="https://github.com/ria3100"
                   target="_blank"
+                  rel="noreferrer"
                 >
                   <i className="fab fa-github"></i>
                 </a>

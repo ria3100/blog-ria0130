@@ -5,7 +5,6 @@ import { useRouter } from 'next/router'
 import { firebase } from '~/lib/firebase'
 
 import '~/styles/main.scss'
-import '~/styles/article.scss'
 
 type Props = {
   Component: NextComponentType<NextPageContext, any, {}>

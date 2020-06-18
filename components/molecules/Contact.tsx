@@ -10,7 +10,11 @@ export const Contact: React.FC = () => {
           <SectionTitle>Contact</SectionTitle>
           <p className="lg:w-2/3 mx-auto leading-relaxed text-base">
             お問い合わせ、ご依頼等もしございましたら{' '}
-            <a href="https://twitter.com/_Ria0130" target="_blank">
+            <a
+              href="https://twitter.com/_Ria0130"
+              target="_blank"
+              rel="noreferrer"
+            >
               Twitter
             </a>{' '}
             の DM までお願いします。

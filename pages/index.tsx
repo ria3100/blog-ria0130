@@ -9,11 +9,11 @@ type Props = { articles: Article[] }
 const Home: NextPage<Props> = ({ articles }) => {
   const meta = {
     title: '',
+    description: 'Front-end Engineer.',
     og: {
       type: 'website',
       image: '',
       path: '',
-      description: 'Front-end Engineer.',
     },
   }
 

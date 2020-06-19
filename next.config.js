@@ -6,6 +6,7 @@ const addClasses = require('rehype-add-classes')
 
 const additions = {
   pre: 'shiki bg-gray-900 p-4 mb-6 mt-0 overflow-x-scroll',
+  'pre > code': 'codeBlock',
   p: 'px-4 mb-6',
   h1: 'text-3xl px-4 mb-6',
   h2: 'text-2xl px-4 mb-6',

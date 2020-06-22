@@ -59,7 +59,9 @@ export const getArticles = async () => {
   const articles = Promise.all(fileNameList.map(name => loadArticle(name)))
 
   const sortedList = (await articles)
-    .filter(article => !article.exclude)
+    .filter(
+      article => process.env.NODE_ENV === 'development' || !article.exclude
+    )
     .sort((a, b) => a.secondsSinceEpoch - b.secondsSinceEpoch)
     .reverse()
 

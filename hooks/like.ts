@@ -1,6 +1,7 @@
 import * as React from 'react'
 
-import { firebase } from '~/lib/firebase'
+import type { Todo } from '~/repository/todo/ITodoRepository'
+import { TodoRepository } from '~/repository/todo/TodoRepositoryImpl'
 
 export const useLike = (path: string) => {
   const isClient = typeof window !== 'undefined'

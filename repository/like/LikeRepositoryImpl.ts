@@ -10,8 +10,20 @@ export class LikeRepository extends ILikeRepository {
     super()
   }
 
-  public find({ uid, path }: Pick<Like, 'uid'|'path'>) {
-    return new Promise<LikedId>(resolve => {
+  public count({ path }: Pick<Like, 'path'>) {
+    return new Promise<number>(resolve => {
+      firebase.firestore()
+        .collection(collectionName)
+        .where('path', '==', path)
+        .get()
+        .then(querySnapshot => {
+          resolve(querySnapshot.size)
+        })
+    })
+  }
+
+  public find({ uid, path }: Pick<Like, 'uid' | 'path'>) {
+    return new Promise<LikedId | null>(resolve => {
       firebase.firestore()
         .collection(collectionName)
         .where('uid', '==', uid)
@@ -21,11 +33,12 @@ export class LikeRepository extends ILikeRepository {
           querySnapshot.forEach(doc => {
             resolve(doc.id)
           })
+          resolve(null)
         })
     })
   }
 
-  public add({ uid, path }: Pick<Like, 'uid'|'path'>) {
+  public add({ uid, path }: Pick<Like, 'uid' | 'path'>) {
     const date = new Date()
     const createdAt = date.getTime() + ''
 

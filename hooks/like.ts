@@ -11,6 +11,7 @@ export const useLike = (path: string) => {
 
   const [uid, setUid] = React.useState<string | null>(null)
   const [likedId, setLikedId] = React.useState<string | null>(null)
+  const [count, setCount] = React.useState<number | null>(null)
 
   let isLoading: boolean = false
 
@@ -18,13 +19,16 @@ export const useLike = (path: string) => {
     if (!isClient) return
 
     const init = async () => {
-      const user = await _UserRepository.fetchUser()
-      if (!user.uid) return
+      const { uid } = await _UserRepository.fetchUser()
+      if (!uid) return
 
-      setUid(user.uid)
+      setUid(uid)
 
-      const likedId = await _LikeRepository.find({ uid: user.uid, path })
+      const likedId = await _LikeRepository.find({ uid, path })
       setLikedId(likedId)
+
+      const count = await _LikeRepository.count({ path })
+      setCount(count)
     }
 
     init()
@@ -35,6 +39,7 @@ export const useLike = (path: string) => {
 
     const likedId = await _LikeRepository.add({ uid, path })
     setLikedId(likedId)
+    setCount((count ?? 0) + 1)
   }
 
   const remove = async () => {
@@ -42,6 +47,7 @@ export const useLike = (path: string) => {
 
     await _LikeRepository.remove(likedId)
     setLikedId(null)
+    setCount((count ?? 0) - 1)
   }
 
   const toggleLike = async () => {
@@ -58,5 +64,6 @@ export const useLike = (path: string) => {
   return {
     liked: !!likedId,
     toggleLike,
+    count,
   }
 }

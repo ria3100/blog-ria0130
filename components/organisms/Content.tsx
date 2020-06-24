@@ -1,7 +1,7 @@
 import * as React from 'react'
 
-import { Tags, ArticleFooter, ShareButtons } from '~/components/molecules'
-import { Like } from '~/components/atoms'
+import { ArticleFooter } from '~/components/organisms'
+import { Tags } from '~/components/molecules'
 
 export const Content: React.FC<{ article: Article }> = ({ article }) => {
   return (
@@ -18,11 +18,7 @@ export const Content: React.FC<{ article: Article }> = ({ article }) => {
             <div dangerouslySetInnerHTML={{ __html: article.body }} />
           </div>
 
-          <Like path={article.fullUrlPath} />
-
-          <ShareButtons title={article.title} path={article.fullUrlPath} />
-
-          <ArticleFooter />
+          <ArticleFooter title={article.title} path={article.fullUrlPath} />
         </div>
       </div>
     </section>

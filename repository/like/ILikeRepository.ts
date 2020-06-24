@@ -7,7 +7,13 @@ export type Like = {
 }
 
 export abstract class ILikeRepository {
-  abstract async find(search: Pick<Like, 'uid' | 'path'>): Promise<LikedId>
+  abstract async count(search: Pick<Like, 'path'>): Promise<number>
+
+  abstract async find(
+    search: Pick<Like, 'uid' | 'path'>
+  ): Promise<LikedId | null>
+
   abstract async add(search: Pick<Like, 'uid' | 'path'>): Promise<LikedId>
+
   abstract async remove(likedId: string): Promise<LikedId>
 }

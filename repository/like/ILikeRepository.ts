@@ -1,9 +1,13 @@
+export type LikedId = string
+
 export type Like = {
-  likedId: string
+  uid: string
+  path: string
+  createdAt: string
 }
 
 export abstract class ILikeRepository {
-  abstract async find(path: string): Promise<Like>
-  abstract async add(path: string): Promise<Like>
-  abstract async remove(id: Like): Promise<Like>
+  abstract async find(search: Pick<Like, 'uid' | 'path'>): Promise<LikedId>
+  abstract async add(search: Pick<Like, 'uid' | 'path'>): Promise<LikedId>
+  abstract async remove(likedId: string): Promise<LikedId>
 }

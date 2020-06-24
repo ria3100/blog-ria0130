@@ -1,60 +1,58 @@
 import * as React from 'react'
 
-import type { Todo } from '~/repository/todo/ITodoRepository'
-import { TodoRepository } from '~/repository/todo/TodoRepositoryImpl'
+import { UserRepository } from '~/repository/user/UserRepositoryImpl'
+import { LikeRepository } from '~/repository/like/LikeRepositoryImpl'
 
 export const useLike = (path: string) => {
   const isClient = typeof window !== 'undefined'
 
-  const [uid, setUid] = React.useState<string>('')
-  const [likedId, setLikedId] = React.useState<string>('')
+  const _UserRepository = new UserRepository()
+  const _LikeRepository = new LikeRepository()
+
+  const [uid, setUid] = React.useState<string | null>(null)
+  const [likedId, setLikedId] = React.useState<string | null>(null)
+
+  let isLoading: boolean = false
 
   React.useEffect(() => {
     if (!isClient) return
 
-    firebase.auth().onAuthStateChanged(user => {
-      if (!user) return
+    const init = async () => {
+      const user = await _UserRepository.fetchUser()
+      if (!user.uid) return
 
       setUid(user.uid)
 
-      const db = firebase.firestore()
-      db.collection('liked')
-        .where('uid', '==', user.uid)
-        .where('path', '==', path)
-        .get()
-        .then(querySnapshot => {
-          querySnapshot.forEach(doc => {
-            setLikedId(doc.id)
-          })
-        })
-    })
+      const likedId = await _LikeRepository.find({ uid: user.uid, path })
+      setLikedId(likedId)
+    }
+
+    init()
   }, [])
 
-  const add = () => {
-    const db = firebase.firestore()
-    const current = { uid: uid, path }
+  const add = async () => {
+    if (!uid) return
 
-    db.collection('liked')
-      .add(current)
-      .then(function(docRef) {
-        setLikedId(docRef.id)
-      })
+    const likedId = await _LikeRepository.add({ uid, path })
+    setLikedId(likedId)
   }
 
-  const remove = () => {
-    const db = firebase.firestore()
-    db.collection('liked')
-      .doc(likedId)
-      .delete()
-    setLikedId('')
+  const remove = async () => {
+    if (!likedId) return
+
+    await _LikeRepository.remove(likedId)
+    setLikedId(null)
   }
 
-  const toggleLike = () => {
-    if (!isClient) return
+  const toggleLike = async () => {
+    if (!isClient || isLoading) return
 
-    // FIXME: 連打対策してない
+    isLoading = true
+
     const toggle = !likedId ? add : remove
-    toggle()
+    await toggle()
+
+    isLoading = false
   }
 
   return {

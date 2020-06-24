@@ -1,11 +1,12 @@
 import * as React from 'react'
 
-type Props = {
-  toggleLike: () => void
-  liked: boolean
-}
+import { useLike } from '~/hooks/like'
 
-export const Like: React.FC<Props> = ({ toggleLike, liked }) => {
+type Props = { path: string }
+
+export const Like: React.FC<Props> = ({ path }) => {
+  const { liked, toggleLike } = useLike(path)
+
   return (
     <>
       <div className="w-full flex justify-center mb-8">

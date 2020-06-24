@@ -1,89 +1,57 @@
 import { firebase } from '~/lib/firebase'
 
 import { ILikeRepository } from '~/repository/like/ILikeRepository'
-import type { Like } from '~/repository/like/ILikeRepository'
+import type { Like, LikedId } from '~/repository/like/ILikeRepository'
 
 export const collectionName = 'liked'
 
 export class LikeRepository extends ILikeRepository {
-  private store: ReturnType<typeof firebase.firestore>
-
-  private likedId: string = ''
-  private uid: string = ''
-
-  public constructor(path: string) {
+  public constructor() {
     super()
-    this.store = firebase.firestore()
-
-    // return new Promise(async (resolve) => {
-    const isClient = typeof window !== 'undefined'
-
-    if (!isClient) return
-
-    (async () => {
-      this.uid = await this.fetchUid() + ''
-      if (!this.uid) return
-
-      this.likedId = await (await this.find(path)).likedId
-
-    })()
-
   }
 
-  private fetchUid() {
-    return new Promise<string|null>((resolve) => {
-      firebase.auth().onAuthStateChanged(user => {
-        resolve(user?.uid)
-      })
-    })
-  }
-
-  // FIXME: Repository に状態を持たせず Hooks で吸収する
-  public async find(path: string) {
-    return new Promise<Like>((resolve) => {
-      this.store
+  public find({ uid, path }: Pick<Like, 'uid'|'path'>) {
+    return new Promise<LikedId>(resolve => {
+      firebase.firestore()
         .collection(collectionName)
-        .where('uid', '==', this.uid)
+        .where('uid', '==', uid)
         .where('path', '==', path)
         .get()
         .then(querySnapshot => {
           querySnapshot.forEach(doc => {
-            resolve({ likedId: doc.id })
+            resolve(doc.id)
           })
         })
     })
   }
 
-  public add(path: string) {
+  public add({ uid, path }: Pick<Like, 'uid'|'path'>) {
     const date = new Date()
     const createdAt = date.getTime() + ''
 
-    const current = { id: this.uid, path, createdAt }
+    const current: Like = { uid, path, createdAt }
 
-    return new Promise<Like>((resolve, reject) => {
-      this.store
+    return new Promise<LikedId>((resolve, reject) => {
+      firebase.firestore()
         .collection(collectionName)
         .add(current)
-        .then((docRef) =>
-          resolve({likedId:docRef.id})
-        )
-        .catch((error) => {
+        .then(docRef => resolve(docRef.id))
+        .catch(error => {
           reject('Error adding document: ' + error)
         })
     })
   }
 
-  public remove() {
-    return new Promise<Pick<Like, 'likedId'>>((resolve, reject) => {
-      this.store
+  public remove(likedId: LikedId) {
+    return new Promise<LikedId>((resolve, reject) => {
+      firebase.firestore()
         .collection(collectionName)
-        .doc(this.likedId)
+        .doc(likedId)
         .delete()
-        .then(() => resolve({likedId:this.likedId}))
-        .catch((error) => {
+        .then(() => resolve(likedId))
+        .catch(error => {
           reject('Error removing document: ' + error)
         })
     })
   }
 }
-

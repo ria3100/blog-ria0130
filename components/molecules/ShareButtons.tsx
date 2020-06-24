@@ -17,7 +17,7 @@ export const ShareButtons: React.FC<Props> = ({ title, path }) => {
         rel="noreferrer"
       >
         <button
-          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-4 rounded mr-4"
+          className="outline-none bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-4 rounded mr-4"
           aria-label="shate twitter"
         >
           <i className="fab fa-twitter" />
@@ -30,7 +30,7 @@ export const ShareButtons: React.FC<Props> = ({ title, path }) => {
         rel="noreferrer"
       >
         <button
-          className="bg-blue-700 hover:bg-blue-800 text-white font-bold py-1 px-4 rounded mr-4"
+          className="outline-none bg-blue-700 hover:bg-blue-800 text-white font-bold py-1 px-4 rounded mr-4"
           aria-label="shate hatena"
         >
           <i className="fab fa-hatena" />

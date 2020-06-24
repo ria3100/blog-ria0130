@@ -18,6 +18,8 @@ export const useLike = (path: string) => {
   React.useEffect(() => {
     if (!isClient) return
 
+    isLoading = true
+
     const init = async () => {
       const { uid } = await _UserRepository.fetchUser()
       if (!uid) return
@@ -29,6 +31,8 @@ export const useLike = (path: string) => {
 
       const count = await _LikeRepository.count({ path })
       setCount(count)
+
+      isLoading = false
     }
 
     init()

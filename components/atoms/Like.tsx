@@ -16,7 +16,8 @@ export const Like: React.FC<Props> = ({ path }) => {
     <>
       <button
         onClick={() => toggleLike()}
-        className="bg-white text-red-600 py-1 px-2 border border-red-500 hover:text-red-700 hover:border-red-600 rounded mr-4"
+        className="outline-none bg-white text-red-600 py-1 px-2 border border-red-500 hover:text-red-700 hover:border-red-600 rounded mr-4"
+        aria-label="Like"
       >
         <i className={`${liked ? iconClass.on : iconClass.off} mr-2`} />
         {count && count.toLocaleString()}

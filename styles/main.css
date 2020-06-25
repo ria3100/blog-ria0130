@@ -1,5 +1,3 @@
-/* @import url(https://use.fontawesome.com/releases/v5.8.1/css/all.css); */
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -10,10 +8,10 @@
   font-weight: bold
 }
 
-/* @font-face {
+@font-face {
   font-family: 'JetBrainsMono';
   src: url('/JetBrainsMono-Regular.woff2') format('woff2');
-} */
+}
 
 .articleBody h1::after {
   content: "";

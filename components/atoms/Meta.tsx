@@ -36,6 +36,10 @@ export const Meta: React.FC<Props> = ({ title, description, og, keywords }) => {
       <meta property="og:url" content={getFullPath(og.path)} />
       <meta property="og:site_name" content="Ria" />
       {keywords && <meta content={keywords.join(',')} name="keywords" />}
+      <link
+        rel="stylesheet"
+        href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+      />
     </Head>
   )
 }

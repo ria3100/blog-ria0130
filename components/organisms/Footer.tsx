@@ -7,7 +7,13 @@ export const Footer: React.FC = () => {
       <div className="container px-5 py-8 mx-auto flex items-center sm:flex-row flex-col">
         <Link href="/">
           <a className="flex title-font font-medium items-center md:justify-start justify-center text-gray-900 hover:text-gray-700">
-            {/* <img src="/icons/logo.svg" className="w-10 h-10" alt="site logo" /> */}
+            <amp-img
+              src="/icons/logo.svg"
+              className="w-10 h-10"
+              alt="site logo"
+              width="40"
+              height="40"
+            />
             <span className="ml-3 text-xl">Ria.dev</span>
           </a>
         </Link>

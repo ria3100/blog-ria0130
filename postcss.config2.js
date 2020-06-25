@@ -7,21 +7,19 @@ const whitelist = Object.keys(classList).reduce((acc, key) => {
 
 // 使われてないスタイルを事前ビルドするとHMRで開発する際に不便なので production のみに
 const isProduction = [
-  [
-    '@fullhuman/postcss-purgecss',
-    {
-      content: ['./pages/**/*.tsx', './components/**/*.tsx'],
-      defaultExtractor: content => content.match(/[\w-/:]+(?<!:)/g) || [],
-      whitelist,
-    },
-  ],
-  ['cssnano', { preset: 'default' }],
+  require('@fullhuman/postcss-purgecss')({
+    content: ['./pages/**/*.tsx', './components/**/*.tsx'],
+    defaultExtractor: content => content.match(/[\w-/:]+(?<!:)/g) || [],
+    whitelist,
+  }),
+  require('cssnano')({ preset: 'default' }),
 ]
 
 module.exports = {
   plugins: [
-    'tailwindcss',
-    'autoprefixer',
-    ...(process.env.NODE_ENV === 'development' ? [] : isProduction),
+    require('tailwindcss')(),
+    require('autoprefixer')(),
+    // ...(process.env.NODE_ENV === 'development' ? [] : isProduction),
+    ...isProduction,
   ],
 }

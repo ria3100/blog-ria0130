@@ -27,14 +27,14 @@ export const Mainvisual: React.FC = () => {
       /> */}
 
       <div className="pointer-events-none">
-        <img
+        {/* <img
           className="mx-auto w-80px lg:w-140px mb-8"
           src="/mainvisual/ria.svg"
         />
         <img
           className="mx-auto w-280px lg:w-400px"
           src="/mainvisual/caption.svg"
-        />
+        /> */}
       </div>
     </div>
   )

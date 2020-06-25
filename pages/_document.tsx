@@ -2,7 +2,7 @@ import Document, { Head, Main, NextScript } from 'next/document'
 import type { DocumentContext } from 'next/document'
 
 // @ts-ignore
-import bundleCss from '!raw-loader!../styles/main.scss'
+import bundleCss from '!raw-loader!../styles/build.css'
 
 export default class MyDocument extends Document {
   static async getInitialProps(ctx: DocumentContext) {

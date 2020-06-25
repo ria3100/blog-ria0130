@@ -75,7 +75,5 @@ module.exports = withOffline(
     // sassOptions: {
     //   includePaths: [path.join(__dirname, 'styles')],
     // },
-    // postcss.config.js でパースするためだけのプロパティ
-    purgecssWhitelist: additions,
   })
 )

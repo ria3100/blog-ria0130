@@ -4,9 +4,6 @@ const fs = require('fs')
 const shiki = require('rehype-shiki')
 const addClasses = require('rehype-add-classes')
 
-const WebpackOnBuildPlugin = require('on-build-webpack')
-const postcss = require('postcss')
-
 const additions = {
   pre: 'shiki bg-gray-900 p-4 mb-6 mt-0 overflow-x-scroll',
   'pre > code': 'codeBlock',
@@ -60,20 +57,7 @@ module.exports = withOffline(
     },
     webpack: config => {
       config.resolve.alias['~'] = path.resolve(__dirname)
-
-      config.plugins.push(
-        new WebpackOnBuildPlugin(async stats => {
-          // const fileList = await fs.readdirSync(
-          //   __dirname + '/../src/components'
-          // )
-          console.log('fooo')
-        })
-      )
-
       return config
     },
-    // sassOptions: {
-    //   includePaths: [path.join(__dirname, 'styles')],
-    // },
   })
 )

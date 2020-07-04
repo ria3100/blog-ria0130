@@ -6,6 +6,8 @@ import { getArticles, getArticle } from '~/utils/article'
 import { ArticleTemplate } from '~/components/templates'
 import { Meta } from '~/components/atoms'
 
+export const config = { amp: true }
+
 type Props = { article: Article }
 const Article: React.FC<Props> = ({ article }) => {
   const image = `https://res.cloudinary.com/dvtfyasu2/image/upload/l_text:Sawarabi%20Gothic_50:${article.title},co_rgb:f1f2ef,w_600,c_fit/v1592397543/article_card.png`

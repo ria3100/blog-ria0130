@@ -11,9 +11,11 @@ export const Profile: React.FC = () => {
           <div className="flex flex-col sm:flex-row mt-10">
             <div className="sm:w-1/3 text-center sm:pr-8 sm:py-8">
               <div className="w-40 h-40 rounded-full inline-flex items-center justify-center bg-gray-200 text-gray-400">
-                <img
+                <amp-img
                   className="rounded-full"
                   src="https://pbs.twimg.com/profile_images/1222177937182482433/aS6hxN-R_400x400.jpg"
+                  width="160"
+                  height="160"
                 />
               </div>
               <div className="flex flex-col items-center text-center justify-center">

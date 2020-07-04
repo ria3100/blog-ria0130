@@ -1,7 +1,8 @@
 import * as React from 'react'
+// import { useAmp } from 'next/amp'
 
 import { ShareButtons } from '~/components/molecules'
-import { Like } from '~/components/atoms'
+// import { Like } from '~/components/atoms'
 
 type Props = {
   title: string
@@ -9,10 +10,12 @@ type Props = {
 }
 
 export const ArticleFooter: React.FC<Props> = ({ title, path }) => {
+  // const isAmp = useAmp()
+
   return (
     <div className="w-full">
       <div className="px-4 mb-24">
-        <Like path={path} />
+        {/* {isAmp && <Like path={path} />} */}
         <ShareButtons title={title} path={path} />
       </div>
 

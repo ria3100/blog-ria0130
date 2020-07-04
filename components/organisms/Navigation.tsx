@@ -20,7 +20,13 @@ export const Navigation: React.FC = () => {
         {/* center */}
         <Link href="/">
           <a className="flex w-1/3 title-font font-medium items-center text-gray-900 justify-center">
-            <img src="/icons/logo.svg" className="w-10 h-10" alt="site logo" />
+            <amp-img
+              src="/icons/logo.svg"
+              className="w-10 h-10"
+              alt="site logo"
+              width="40"
+              height="40"
+            />
           </a>
         </Link>
 

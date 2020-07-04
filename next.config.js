@@ -59,10 +59,5 @@ module.exports = withOffline(
       config.resolve.alias['~'] = path.resolve(__dirname)
       return config
     },
-    sassOptions: {
-      includePaths: [path.join(__dirname, 'styles')],
-    },
-    // postcss.config.js でパースするためだけのプロパティ
-    purgecssWhitelist: additions,
   })
 )

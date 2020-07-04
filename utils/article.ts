@@ -29,7 +29,10 @@ const loadArticle = async (name: string) => {
   const formattedPublishDate = formatSEODate(publishDate)
   const formattedModifiedDate = formatSEODate(modifiedDate, true)
   const secondsSinceEpoch = getSecondsSinceEpoch(formattedPublishDate)
-  const body = mdx2string(MDXComponent)
+  const body = mdx2string(MDXComponent).replace(
+    /style="0:background: #272822"/g,
+    ''
+  )
 
   const article: Article = {
     title,

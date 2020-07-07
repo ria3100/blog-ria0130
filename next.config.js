@@ -26,38 +26,33 @@ const withMDX = require('@zeit/next-mdx')({
   },
 })
 
-// TODO: 5.x だと @rollup/pluginutils でエラーが出るので 4.0.6 を使っている
-const withOffline = require('next-offline')
+module.exports = withMDX({
+  pageExtensions: ['tsx'],
+  // Firebase 環境で必要
+  exportTrailingSlash: true,
+  exportPathMap: async (_, { dev }) => {
+    const staticPagePaths = {
+      '/': { page: '/' },
+      '/article/list': { page: '/article/list' },
+      '/about': { page: '/about' },
+    }
 
-module.exports = withOffline(
-  withMDX({
-    pageExtensions: ['tsx'],
-    // Firebase 環境で必要
-    exportTrailingSlash: true,
-    exportPathMap: async (_, { dev }) => {
-      const staticPagePaths = {
-        '/': { page: '/' },
-        '/article/list': { page: '/article/list' },
-        '/about': { page: '/about' },
+    if (dev) return staticPagePaths
+
+    const articles = fs.readdirSync('./contents')
+
+    const paths = articles.reduce((acc, article) => {
+      acc[`/article/${article}`] = {
+        page: '/article/[slag]',
+        query: { slag: article },
       }
+      return acc
+    }, staticPagePaths)
 
-      if (dev) return staticPagePaths
-
-      const articles = fs.readdirSync('./contents')
-
-      const paths = articles.reduce((acc, article) => {
-        acc[`/article/${article}`] = {
-          page: '/article/[slag]',
-          query: { slag: article },
-        }
-        return acc
-      }, staticPagePaths)
-
-      return paths
-    },
-    webpack: config => {
-      config.resolve.alias['~'] = path.resolve(__dirname)
-      return config
-    },
-  })
-)
+    return paths
+  },
+  webpack: config => {
+    config.resolve.alias['~'] = path.resolve(__dirname)
+    return config
+  },
+})

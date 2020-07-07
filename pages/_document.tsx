@@ -1,7 +1,8 @@
 import Document, { Head, Main, NextScript } from 'next/document'
 import type { DocumentContext } from 'next/document'
 
-import { preBuildStyle } from '~/utils/preBuildStyle'
+// @ts-ignore
+import style from "!!raw-loader!../temp/build.css";
 
 export default class MyDocument extends Document {
   static async getInitialProps(ctx: DocumentContext) {
@@ -14,7 +15,7 @@ export default class MyDocument extends Document {
         ...initialProps.styles,
         <style
           key="custom"
-          dangerouslySetInnerHTML={{ __html: await preBuildStyle() }}
+          dangerouslySetInnerHTML={{ __html: style }}
         />,
       ],
     }

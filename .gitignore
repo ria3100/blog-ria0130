@@ -3,6 +3,7 @@ out
 .next
 yarn-error.log
 .firebase
+temp
 
 # OS
 .DS_Store

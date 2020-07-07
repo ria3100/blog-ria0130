@@ -1,0 +1,30 @@
+import { NamedCodeBlock } from '~/components/atoms'
+
+export const meta = {
+  title: 'モダンフロントエンドで検討するスタイル定義の選択',
+  tags: ['CSS', 'CSS in JS', 'Styled Component', 'SASS', 'PostCss', 'Tailwind CSS'],
+  publishDate: '2020-06-30',
+  modifiedDate: false,
+  seoDescription: 'いま選ぶべきフロントエンドのスタイル定義の方法を紹介する',
+  exclude: true
+}
+
+
+# CSS in JS
+
+JSXコンポーネントにあわせて Tree Shaking されるので無駄なスタイル定義がビルド時に削除される
+状態に依存したスタイルが定義しやすい
+
+
+# Tailwind CSS
+
+詳細度に引きずられて意図しないスタイルが適用されない、どの親に属していても同じスタイルが当たることを担保できる
+
+
+
+# CSS / SASS etc
+
+
+コンポーネントと別で定義するので乖離が発生しがち
+
+

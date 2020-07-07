@@ -1,7 +1,7 @@
 const path = require('path')
 const fs = require('fs')
 
-const shiki = require('rehype-shiki')
+const shiki = require('./utils/rehype-shiki')
 const addClasses = require('rehype-add-classes')
 
 const additions = {
@@ -20,7 +20,7 @@ const withMDX = require('@zeit/next-mdx')({
   options: {
     remarkPlugins: [],
     rehypePlugins: [
-      [shiki, { theme: 'monokai' }],
+      [shiki, { theme: 'monokai', useBackground: false }],
       [addClasses, additions],
     ],
   },

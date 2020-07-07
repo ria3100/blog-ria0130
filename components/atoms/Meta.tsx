@@ -17,7 +17,6 @@ export const Meta: React.FC<Props> = ({ title, description, og, keywords }) => {
     <Head>
       <title>{title && title + ' | '}Ria</title>
       <meta name="description" content={description}></meta>
-      <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       <meta charSet="UTF-8" />
       <meta content="#272821" name="theme-color" />
       <link href="/manifest.json" rel="manifest" />
@@ -33,7 +32,6 @@ export const Meta: React.FC<Props> = ({ title, description, og, keywords }) => {
       <meta property="og:title" content={title} />
       <meta property="og:image" content={og.image || defaultCard} />
       <meta property="og:description" content={description} />
-      <meta property="og:url" content={getFullPath(og.path)} />
       <meta property="og:site_name" content="Ria" />
       {keywords && <meta content={keywords.join(',')} name="keywords" />}
       <link

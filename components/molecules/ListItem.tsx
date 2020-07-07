@@ -17,7 +17,7 @@ export const ListItem: React.FC<Props> = ({ article }) => {
             </Link>
           </div>
           <div>
-            <span className="text-gray-400 text-sm">
+            <span className="text-gray-700 text-sm">
               <Date date={article.publishDate} />
             </span>
           </div>

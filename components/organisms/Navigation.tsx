@@ -40,6 +40,7 @@ export const Navigation: React.FC = () => {
                   href="https://twitter.com/_ria0130"
                   target="_blank"
                   rel="noreferrer"
+                  aria-label="twitter"
                 >
                   <i className="fab fa-twitter"></i>
                 </a>
@@ -48,6 +49,7 @@ export const Navigation: React.FC = () => {
                   href="https://github.com/ria3100"
                   target="_blank"
                   rel="noreferrer"
+                  aria-label="github"
                 >
                   <i className="fab fa-github"></i>
                 </a>

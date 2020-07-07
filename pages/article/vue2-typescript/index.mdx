@@ -1,4 +1,7 @@
+import { ArticleTemplate } from '~/components/templates'
 import { NamedCodeBlock } from '~/components/atoms'
+
+export const config = { amp: true }
 
 export const meta = {
   title: 'Compositon API と direct-vuex を使って TypeScript に対応する',
@@ -6,8 +9,14 @@ export const meta = {
   publishDate: '2020-06-18',
   modifiedDate: false,
   seoDescription: 'Vue3 で実装予定の Composition API を使って Vue2 を TypeScript 対応する話',
-  exclude: false
 }
+
+export default ({ children }) => (
+  <ArticleTemplate meta={meta}>
+    {children}
+  </ArticleTemplate>
+)
+
 
 Vue3 のリリースが 2020 Q2 に伸びていました。
 普段 React + TypeScript で開発しているので Vue3 の Composition API や TypeScript 対応に期待していて、

@@ -15,7 +15,6 @@ const additions = {
 }
 
 const withMDX = require('@zeit/next-mdx')({
-  // parse mdx files
   extension: /\.mdx?$/,
   options: {
     remarkPlugins: [],
@@ -27,31 +26,29 @@ const withMDX = require('@zeit/next-mdx')({
 })
 
 module.exports = withMDX({
-  pageExtensions: ['tsx'],
+  pageExtensions: ['tsx', 'mdx'],
   // Firebase 環境で必要
   exportTrailingSlash: true,
   exportPathMap: async (_, { dev }) => {
     const staticPagePaths = {
       '/': { page: '/' },
-      '/article/list': { page: '/article/list' },
       '/about': { page: '/about' },
     }
 
     if (dev) return staticPagePaths
 
-    const articles = fs.readdirSync('./contents')
+    const articles = fs.readdirSync('./pages/article')
 
     const paths = articles.reduce((acc, article) => {
       acc[`/article/${article}`] = {
-        page: '/article/[slag]',
-        query: { slag: article },
+        page: `/article/${article}`,
       }
       return acc
     }, staticPagePaths)
 
     return paths
   },
-  webpack: config => {
+  webpack: (config) => {
     config.resolve.alias['~'] = path.resolve(__dirname)
     return config
   },

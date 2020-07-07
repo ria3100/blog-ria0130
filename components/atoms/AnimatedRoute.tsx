@@ -7,15 +7,16 @@ export const AnimatedRoute: React.FC = ({ children }) => {
   const router = useRouter()
   const isAmp = useAmp()
 
-  const transitions = useTransition(router, router => router.asPath, {
-    from: { opacity: 0.8 },
-    enter: { opacity: 1 },
-    leave: { opacity: 0.8 },
-  })
+  // const transitions = useTransition(router, router => router.asPath, {
+  //   from: { opacity: 0.8 },
+  //   enter: { opacity: 1 },
+  //   leave: { opacity: 0.8 },
+  // })
 
   return (
     <>
-      {isAmp
+      {children}
+      {/* {isAmp
         ? children
         : transitions.map(
             ({ item, key, props }) =>
@@ -24,7 +25,7 @@ export const AnimatedRoute: React.FC = ({ children }) => {
                   {children}
                 </animated.div>
               )
-          )}
+          )} */}
     </>
   )
 }

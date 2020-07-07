@@ -5,13 +5,13 @@ import { formatSEODate, getSecondsSinceEpoch } from '~/utils/formatters'
 
 const articleFileNames = (): Promise<string[]> => {
   const articleFileNames =
-    preval`module.exports = require("fs").readdirSync("./contents")` || []
+    preval`module.exports = require("fs").readdirSync("./pages/article")` || []
   return Promise.resolve(articleFileNames)
 }
 
 const loadArticle = async (name: string) => {
   const { default: MDXComponent, meta } = await import(
-    `../contents/${name}/index.mdx`
+    `../pages/article/${name}/index.mdx`
   )
 
   const {

@@ -1,4 +1,7 @@
+import { ArticleTemplate } from '~/components/templates'
 import { NamedCodeBlock } from '~/components/atoms'
+
+export const config = { amp: true }
 
 export const meta = {
   title: '新しいブログを公開しました。',
@@ -6,8 +9,14 @@ export const meta = {
   publishDate: '2020-06-14',
   modifiedDate: false,
   seoDescription: 'Next.js / MDXでブログ構築しました。',
-  exclude: false
 }
+
+export default ({ children }) => (
+  <ArticleTemplate meta={meta}>
+    {children}
+  </ArticleTemplate>
+)
+
 
 かれこれ n 度目のブログを公開しました。
 技術スタックは React, Next.js, MDX, TypeScript, Tailwind CSS 辺りを使っています。

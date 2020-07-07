@@ -28,6 +28,11 @@ export default class MyDocument extends Document {
         <body className="bg-body-bg">
           <Main />
           <NextScript />
+          <amp-install-serviceworker
+            src="https://ria0130.dev/sw.js"
+            data-iframe-src="https://ria0130.dev/install-sw.html"
+            layout="nodisplay"
+          />
         </body>
       </html>
     )

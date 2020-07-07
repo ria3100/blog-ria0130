@@ -19,7 +19,8 @@ export const Meta: React.FC<Props> = ({ title, description, og, keywords }) => {
       <meta name="description" content={description}></meta>
       <meta charSet="UTF-8" />
       <meta content="#272821" name="theme-color" />
-      <link href="/manifest.json" rel="manifest" />
+      <meta name="description" content={description} />
+      <link rel="manifest" href="/manifest.json" />
       <link rel="shortcut icon" type="image/x-icon" href="/icons/icon512.png" />
       <link rel="apple-touch-icon" type="image/png" href="/icons/icon512.png" />
       <meta name="twitter:card" content="summary_large_image" />
@@ -38,6 +39,11 @@ export const Meta: React.FC<Props> = ({ title, description, og, keywords }) => {
         rel="stylesheet"
         href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
       />
+      <script
+        async
+        custom-element="amp-install-serviceworker"
+        src="https://cdn.ampproject.org/v0/amp-install-serviceworker-0.1.js"
+      ></script>
     </Head>
   )
 }

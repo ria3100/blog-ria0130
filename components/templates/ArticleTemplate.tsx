@@ -8,6 +8,7 @@ type Props = { meta: any }
 export const ArticleTemplate: React.FC<Props> = ({ children, meta }) => {
   const metadata = {
     ...meta,
+    description: meta.seoDescription,
     og: {
       type: 'article',
       image: `https://res.cloudinary.com/dvtfyasu2/image/upload/l_text:Sawarabi%20Gothic_50:${meta.title},co_rgb:f1f2ef,w_600,c_fit/v1592397543/article_card.png`,

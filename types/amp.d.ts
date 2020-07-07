@@ -11,5 +11,6 @@ declare namespace JSX {
 
   interface IntrinsicElements {
     'amp-img': AmpImg
+    'amp-install-serviceworker': any
   }
 }

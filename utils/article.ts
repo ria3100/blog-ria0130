@@ -1,6 +1,5 @@
 import { preval } from 'ts-transformer-preval-macro'
 
-import { mdx2string } from '~/utils/mdx2string'
 import { formatSEODate, getSecondsSinceEpoch } from '~/utils/formatters'
 
 const articleFileNames = (): Promise<string[]> => {
@@ -10,9 +9,7 @@ const articleFileNames = (): Promise<string[]> => {
 }
 
 const loadArticle = async (name: string) => {
-  const { default: MDXComponent, meta } = await import(
-    `../pages/article/${name}/index.mdx`
-  )
+  const { meta } = await import(`../pages/article/${name}/index.mdx`)
 
   const {
     title,
@@ -29,10 +26,6 @@ const loadArticle = async (name: string) => {
   const formattedPublishDate = formatSEODate(publishDate)
   const formattedModifiedDate = formatSEODate(modifiedDate, true)
   const secondsSinceEpoch = getSecondsSinceEpoch(formattedPublishDate)
-  const body = mdx2string(MDXComponent).replace(
-    /style="0:background: #272822"/g,
-    ''
-  )
 
   const article: Article = {
     title,
@@ -50,7 +43,6 @@ const loadArticle = async (name: string) => {
     name: cleaned_name,
     type: 'post',
     secondsSinceEpoch,
-    body,
   }
 
   return article

@@ -33,5 +33,4 @@ type Article = {
   name: string
   type: string
   secondsSinceEpoch: number
-  body: string
 }

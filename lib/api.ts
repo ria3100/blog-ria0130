@@ -42,9 +42,10 @@ export const getPostBySlug = async (slug: string, fields: string[] = []) => {
 
 export const getAllPosts = async (fields: string[] = []) => {
   const slugs = await getPostSlugs()
-  const posts = slugs
-    .map((slug) => await getPostBySlug(slug, fields))
-    // sort posts by date in descending order
-    .sort((post1, post2) => (post1.date > post2.date ? -1 : 1))
+  const posts = (
+    await Promise.all(
+      slugs.map(async (slug) => await getPostBySlug(slug, fields))
+    )
+  ).sort((post1, post2) => (post1.date > post2.date ? -1 : 1))
   return posts
 }

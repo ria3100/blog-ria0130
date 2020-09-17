@@ -1,61 +1,38 @@
 import { useRouter } from 'next/router'
 import ErrorPage from 'next/error'
-import { getPostBySlug, getAllPosts } from '../../lib/api'
-import Head from 'next/head'
-import markdownToHtml from '../../lib/markdownToHtml'
+import { getPostBySlug, getAllPosts } from '~/lib/api'
+import markdownToHtml from '~/lib/markdownToHtml'
+import { ArticleTemplate } from '~/components/templates'
 
-const Post = ({ post, morePosts, preview }: any) => {
+const Post = ({ post }: any) => {
   const router = useRouter()
   if (!router.isFallback && !post?.slug) {
     return <ErrorPage statusCode={404} />
   }
 
-  console.log({ post, morePosts, preview })
+  // console.log(post)
+
+  const meta = {
+    title: post.title,
+    tags: post.topics,
+    publishDate: 'foo',
+    modifiedDate: false,
+    seoDescription: 'foo',
+  }
+
   return (
     <div>
-      <div
-        // className={markdownStyles['markdown']}
-        dangerouslySetInnerHTML={{ __html: post.content }}
-      />
+      <ArticleTemplate meta={meta}>
+        <div dangerouslySetInnerHTML={{ __html: post.content }} />
+      </ArticleTemplate>
     </div>
-    // <Layout preview={preview}>
-    // {router.isFallback ? (
-    //   <PostTitle>Loading…</PostTitle>
-    // ) : (
-    //   <>
-    //     <article className="mb-32">
-    //       <Head>
-    //         <title>
-    //           {post.title} | Next.js Blog Example with {CMS_NAME}
-    //         </title>
-    //         <meta property="og:image" content={post.ogImage.url} />
-    //       </Head>
-    //       <PostHeader
-    //         title={post.title}
-    //         coverImage={post.coverImage}
-    //         date={post.date}
-    //         author={post.author}
-    //       />
-    //       <PostBody content={post.content} />
-    //     </article>
-    //   </>
-    // )}
-    // </Layout>
   )
 }
 
 export default Post
 
 export const getStaticProps = async ({ params }: any) => {
-  const post = await getPostBySlug(params.slug, [
-    'title',
-    'date',
-    'slug',
-    'author',
-    'content',
-    'ogImage',
-    'coverImage',
-  ])
+  const post = await getPostBySlug(params.slug)
   const content = await markdownToHtml(post.content || '')
 
   return {
@@ -69,10 +46,10 @@ export const getStaticProps = async ({ params }: any) => {
 }
 
 export const getStaticPaths = async () => {
-  const posts = await getAllPosts(['slug'])
+  const posts = await getAllPosts()
 
   return {
-    paths: posts.map((post) => {
+    paths: posts.map((post: any) => {
       return {
         params: {
           slug: post.slug,

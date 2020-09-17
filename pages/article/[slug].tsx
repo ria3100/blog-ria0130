@@ -4,7 +4,7 @@ import { getPostBySlug, getAllPosts } from '../../lib/api'
 import Head from 'next/head'
 import markdownToHtml from '../../lib/markdownToHtml'
 
-export default function Post({ post, morePosts, preview }: any) {
+const Post = ({ post, morePosts, preview }: any) => {
   const router = useRouter()
   if (!router.isFallback && !post?.slug) {
     return <ErrorPage statusCode={404} />
@@ -44,8 +44,10 @@ export default function Post({ post, morePosts, preview }: any) {
   )
 }
 
-export async function getStaticProps({ params }: any) {
-  const post = getPostBySlug(params.slug, [
+export default Post
+
+export const getStaticProps = async ({ params }: any) => {
+  const post = await getPostBySlug(params.slug, [
     'title',
     'date',
     'slug',
@@ -66,8 +68,8 @@ export async function getStaticProps({ params }: any) {
   }
 }
 
-export async function getStaticPaths() {
-  const posts = getAllPosts(['slug'])
+export const getStaticPaths = async () => {
+  const posts = await getAllPosts(['slug'])
 
   return {
     paths: posts.map((post) => {

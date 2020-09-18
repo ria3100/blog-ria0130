@@ -8,9 +8,7 @@
     "style": "postcss styles/main.css --config styles -o temp/build.css",
     "build": "yarn style --env production && next build",
     "start": "next start",
-    "export": "next build && next export",
-    "serve": "yarn export && firebase serve --host 0.0.0.0",
-    "deploy": "yarn export && firebase deploy"
+    "export": "next build && next export"
   },
   "dependencies": {
     "@mdx-js/loader": "^1.5.8",
@@ -18,7 +16,6 @@
     "@toycode/markdown-it-class": "^1.2.4",
     "@zeit/next-css": "^1.0.1",
     "@zeit/next-mdx": "^1.2.0",
-    "firebase": "^7.15.1",
     "framer-motion": "^1.10.3",
     "gray-matter": "^4.0.2",
     "hast-util-to-string": "^1.0.4",

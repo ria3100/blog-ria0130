@@ -27,7 +27,6 @@ const withMDX = require('@zeit/next-mdx')({
 
 module.exports = withMDX({
   pageExtensions: ['tsx', 'mdx'],
-  // Firebase 環境で必要
   exportTrailingSlash: true,
   exportPathMap: async (_, { dev }) => {
     const staticPagePaths = {

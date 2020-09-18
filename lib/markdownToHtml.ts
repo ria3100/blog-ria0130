@@ -17,7 +17,8 @@ const additions = {
 }
 
 export default async function markdownToHtml(markdown: string) {
-  const foo = await shiki
+  //FIXME: markdown-it より shiki が後で実行されているので pre, pre > code にクラスが当たらない
+  return await shiki
     .getHighlighter({ theme: 'monokai' })
     .then((highlighter: any) => {
       const md = markdownIt({
@@ -29,5 +30,4 @@ export default async function markdownToHtml(markdown: string) {
 
       return md.render(markdown)
     })
-  return foo
 }

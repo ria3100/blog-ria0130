@@ -1,14 +1,8 @@
-import remark from 'remark'
-import html from 'remark-html'
-
 const markdownIt = require('markdown-it')
 const markdownItClass = require('@toycode/markdown-it-class')
 const shiki = require('shiki')
-// import shiki from 'shiki'
 
 const additions = {
-  pre: 'shiki bg-gray-900 p-4 mb-6 mt-0 overflow-x-scroll',
-  'pre > code': 'codeBlock',
   p: 'px-4 mb-6',
   h1: 'text-3xl px-4 mb-6',
   h2: 'text-2xl px-4 mb-6',
@@ -17,7 +11,6 @@ const additions = {
 }
 
 export default async function markdownToHtml(markdown: string) {
-  //FIXME: markdown-it より shiki が後で実行されているので pre, pre > code にクラスが当たらない
   return await shiki
     .getHighlighter({ theme: 'monokai' })
     .then((highlighter: any) => {

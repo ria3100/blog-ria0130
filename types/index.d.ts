@@ -18,19 +18,12 @@ type Meta = {
 }
 
 type Article = {
+  id: string
   title: string
   tags: string[]
-  publishDate: string
-  formattedPublishDate: string
-  modifiedDate: string
-  formattedModifiedDate: string
-  seoDescription: string
-  exclude: boolean
-  urlPath: string
-  fullUrlPath: string
-  canonicalUrl: string
-  hideProgressBar: boolean
-  name: string
-  type: string
-  secondsSinceEpoch: number
+  publishedAt: string
+  description: string
+  markdown: string
 }
+
+type ArticleListItem = Omit<Article, 'markdown'>

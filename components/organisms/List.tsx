@@ -2,7 +2,7 @@ import * as React from 'react'
 
 import { ListItem } from '~/components/molecules'
 
-type Props = { articles: Article[] }
+type Props = { articles: ArticleListItem[] }
 
 export const List: React.FC<Props> = ({ articles }) => {
   return (

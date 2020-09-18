@@ -28,36 +28,6 @@ export const ThisSite: React.FC = () => {
             <div className="h-full flex items-start">
               <div className="flex-grow pl-6">
                 <p className="title-font text-l font-medium text-gray-900 mb-3">
-                  MDX
-                </p>
-                <p className="leading-relaxed mb-5">
-                  "JSX embedded in Markdown" といわれるマークダウンに JSX
-                  が埋め込めるファイル形式で、マークダウンだけでは表現が難しいものを
-                  JSX を埋め込むことで補完しています。 Next.js
-                  でMDXファイルを読み込み記事ページを自動生成しています。TypeSript
-                  対応出来てないのが少し不満。
-                </p>
-              </div>
-            </div>
-          </div>
-          <div className="mb-4 px-4">
-            <div className="h-full flex items-start">
-              <div className="flex-grow pl-6">
-                <p className="title-font text-l font-medium text-gray-900 mb-3">
-                  Firebase
-                </p>
-                <p className="leading-relaxed mb-5">
-                  Firebase Hosting で静的ファイルを配信しています。 Netlify
-                  なども検討したのですが、将来的に Firestore / Functions /
-                  Storage などが使えると拡張しやすいので Firebase にしました。
-                </p>
-              </div>
-            </div>
-          </div>
-          <div className="mb-4 px-4">
-            <div className="h-full flex items-start">
-              <div className="flex-grow pl-6">
-                <p className="title-font text-l font-medium text-gray-900 mb-3">
                   Tailwind CSS
                 </p>
                 <p className="leading-relaxed mb-5">

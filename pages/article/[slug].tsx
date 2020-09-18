@@ -1,23 +1,20 @@
 import { useRouter } from 'next/router'
 import ErrorPage from 'next/error'
-import { getPostBySlug, getAllPosts } from '~/lib/api'
+import { getPostBySlug, getAllPostSlugs } from '~/lib/api'
 import markdownToHtml from '~/lib/markdownToHtml'
 import { ArticleTemplate } from '~/components/templates'
 
 const Post = ({ post }: any) => {
   const router = useRouter()
-  if (!router.isFallback && !post?.slug) {
+  if (!router.isFallback && !post?.id) {
     return <ErrorPage statusCode={404} />
   }
 
-  // console.log(post)
-
   const meta = {
     title: post.title,
-    tags: post.topics,
-    publishDate: 'foo',
-    modifiedDate: false,
-    seoDescription: 'foo',
+    tags: post.tags,
+    publishedAt: post.publishedAt,
+    description: post.description,
   }
 
   return (
@@ -32,8 +29,9 @@ const Post = ({ post }: any) => {
 export default Post
 
 export const getStaticProps = async ({ params }: any) => {
-  const post = await getPostBySlug(params.slug)
-  const content = await markdownToHtml(post.content || '')
+  const posts = await getPostBySlug([params.slug])
+  const post = posts[0]
+  const content = await markdownToHtml(post.markdown || '')
 
   return {
     props: {
@@ -46,16 +44,13 @@ export const getStaticProps = async ({ params }: any) => {
 }
 
 export const getStaticPaths = async () => {
-  const posts = await getAllPosts()
+  const slugs = await getAllPostSlugs()
+  const paths = slugs.map((slug) => ({
+    params: { slug },
+  }))
 
   return {
-    paths: posts.map((post: any) => {
-      return {
-        params: {
-          slug: post.slug,
-        },
-      }
-    }),
+    paths,
     fallback: false,
   }
 }

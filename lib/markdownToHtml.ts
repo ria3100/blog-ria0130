@@ -1,5 +1,6 @@
 const markdownIt = require('markdown-it')
 const markdownItClass = require('@toycode/markdown-it-class')
+const meta = require('markdown-it-meta')
 const shiki = require('shiki')
 
 const additions = {
@@ -19,7 +20,9 @@ export default async function markdownToHtml(markdown: string) {
         highlight: (code: string, lang: any) => {
           return highlighter.codeToHtml(code, lang)
         },
-      }).use(markdownItClass, additions)
+      })
+        .use(markdownItClass, additions)
+        .use(meta)
 
       return md.render(markdown)
     })

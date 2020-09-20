@@ -4,7 +4,7 @@ import Link from 'next/link'
 import { Navigation, Mainvisual, List, Footer } from '~/components/organisms'
 import { AnimatedRoute } from '~/components/atoms'
 
-type Props = { articles: Article[] }
+type Props = { articles: ArticleListItem[] }
 
 export const HomeTemplate: React.FC<Props> = ({ articles }) => {
   return (

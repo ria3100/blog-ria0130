@@ -1,4 +1,4 @@
-// import matter from 'gray-matter'
+import dayjs from 'dayjs'
 
 const fetchOptions = {
   headers: {
@@ -8,6 +8,9 @@ const fetchOptions = {
 
 const converContent = (content: any) => {
   if (content.tags) content.tags = content.tags.map((tag: any) => tag.name)
+  if (content.publishedAt)
+    content.publishedAt = dayjs(content.publishedAt).format('YYYY-MM-DD')
+
   return content
 }
 
@@ -32,16 +35,6 @@ export const getPostBySlug = async (slugs: string[]) => {
   const contents = posts.contents
 
   return contents.map((content: any) => converContent(content))
-
-  // const fileContents = posts.contents[0].markdown
-
-  // const { data, content } = matter(fileContents)
-
-  // return {
-  //   ...data,
-  //   slug,
-  //   content,
-  // }
 }
 
 export const getPostList = async () => {
@@ -51,10 +44,7 @@ export const getPostList = async () => {
   )
   const { contents } = await res.json()
 
-  return contents.map((content: any) => {
-    content.tags = content.tags.map((tag: any) => tag.name)
-    return content
-  })
+  return contents.map((content: any) => converContent(content))
 }
 
 export const getAllPosts = async () => {

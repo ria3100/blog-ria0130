@@ -4,6 +4,8 @@ import { getPostBySlug, getAllPostSlugs } from '~/lib/api'
 import markdownToHtml from '~/lib/markdownToHtml'
 import { ArticleTemplate } from '~/components/templates'
 
+export const config = { amp: true }
+
 const Post = ({ post }: any) => {
   const router = useRouter()
   if (!router.isFallback && !post?.id) {

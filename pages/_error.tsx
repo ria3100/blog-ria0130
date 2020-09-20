@@ -4,6 +4,8 @@ import { NextPageContext } from 'next'
 
 import { Navigation } from '~/components/organisms'
 
+export const config = { amp: true }
+
 const statusCodes: { [code: number]: string } = {
   400: 'Bad Request',
   404: 'This page could not be found',

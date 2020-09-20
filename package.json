@@ -8,7 +8,7 @@
     "style": "postcss styles/main.css --config styles -o temp/build.css",
     "build": "yarn style --env production && next build",
     "start": "next start",
-    "export": "next build && next export"
+    "export": "yarn build && next export"
   },
   "dependencies": {
     "@mdx-js/loader": "^1.5.8",
@@ -23,6 +23,7 @@
     "markdown-it-meta": "^0.0.1",
     "next": "^9.4.4",
     "next-offline": "4.0.6",
+    "node-fetch": "^2.6.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-spring": "^8.0.27",

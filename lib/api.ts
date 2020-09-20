@@ -1,4 +1,4 @@
-import matter from 'gray-matter'
+// import matter from 'gray-matter'
 
 const fetchOptions = {
   headers: {
@@ -31,9 +31,7 @@ export const getPostBySlug = async (slugs: string[]) => {
   const posts = await res.json()
   const contents = posts.contents
 
-  const foo = contents.map((content: any) => converContent(content))
-
-  return foo
+  return contents.map((content: any) => converContent(content))
 
   // const fileContents = posts.contents[0].markdown
 

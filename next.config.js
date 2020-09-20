@@ -1,5 +1,6 @@
 const path = require('path')
 const fs = require('fs')
+const fetch = require('node-fetch')
 
 const shiki = require('./utils/rehype-shiki')
 const addClasses = require('rehype-add-classes')
@@ -36,11 +37,20 @@ module.exports = withMDX({
 
     if (dev) return staticPagePaths
 
-    const articles = fs.readdirSync('./pages/article')
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_MICRO_CMS}/article?fields=id&limit=1000`,
+      {
+        headers: {
+          'X-API-KEY': process.env.NEXT_PUBLIC_X_API_KEY,
+        },
+      }
+    )
+    const contents = (await res.json())['contents']
+    const slugs = contents.map((item) => item.id)
 
-    const paths = articles.reduce((acc, article) => {
-      acc[`/article/${article}`] = {
-        page: `/article/${article}`,
+    const paths = slugs.reduce((acc, slug) => {
+      acc[`/article/${slug}`] = {
+        page: '/article/[slug]',
       }
       return acc
     }, staticPagePaths)

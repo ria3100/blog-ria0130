@@ -18,10 +18,10 @@ export type ErrorProps = {
   title?: string
 }
 
-function _getInitialProps({
+const _getInitialProps = ({
   res,
   err,
-}: NextPageContext): Promise<ErrorProps> | ErrorProps {
+}: NextPageContext): Promise<ErrorProps> | ErrorProps => {
   const statusCode =
     res && res.statusCode ? res.statusCode : err ? err.statusCode! : 404
   return { statusCode }

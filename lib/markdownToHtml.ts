@@ -11,7 +11,7 @@ const additions = {
   ul: 'px-4 mb-6',
 }
 
-export default async function markdownToHtml(markdown: string) {
+export const markdownToHtml = async (markdown: string) => {
   return await shiki
     .getHighlighter({ theme: 'monokai' })
     .then((highlighter: any) => {

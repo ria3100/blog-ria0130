@@ -37,25 +37,17 @@ module.exports = withMDX({
 
     if (dev) return staticPagePaths
 
+    // TypeSript が使えたら ~/ddd/ の共通処理を使いたい
     const res = await fetch(
       `${process.env.NEXT_PUBLIC_MICRO_CMS}/article?fields=id&limit=1000`,
-      {
-        headers: {
-          'X-API-KEY': process.env.NEXT_PUBLIC_X_API_KEY,
-        },
-      }
+      { headers: { 'X-API-KEY': process.env.NEXT_PUBLIC_X_API_KEY } }
     )
-    const contents = (await res.json())['contents']
-    const slugs = contents.map((item) => item.id)
+    const slugs = (await res.json())['contents'].map((item) => item.id)
 
-    const paths = slugs.reduce((acc, slug) => {
-      acc[`/article/${slug}`] = {
-        page: '/article/[slug]',
-      }
+    return slugs.reduce((acc, slug) => {
+      acc[`/article/${slug}`] = { page: '/article/[slug]' }
       return acc
     }, staticPagePaths)
-
-    return paths
   },
   webpack: (config) => {
     config.resolve.alias['~'] = path.resolve(__dirname)

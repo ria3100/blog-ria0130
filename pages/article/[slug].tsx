@@ -1,28 +1,30 @@
 import { useRouter } from 'next/router'
 import ErrorPage from 'next/error'
-import { getPostBySlug, getAllPostSlugs } from '~/lib/api'
-import markdownToHtml from '~/lib/markdownToHtml'
+
+import { Article } from '~/ddd/domain/article/entity'
+import { getAllArticleSlug, getArticle } from '~/lib/article'
 import { ArticleTemplate } from '~/components/templates'
 
 export const config = { amp: true }
 
-const Post = ({ post }: any) => {
+const Post = ({ article }: { article: Article }) => {
   const router = useRouter()
-  if (!router.isFallback && !post?.id) {
+
+  if (!router.isFallback && !article?.id) {
     return <ErrorPage statusCode={404} />
   }
 
   const meta = {
-    title: post.title,
-    tags: post.tags,
-    publishedAt: post.publishedAt,
-    description: post.description,
+    title: article.title,
+    tags: article.tags,
+    publishedAt: article.publishedAt,
+    description: article.description,
   }
 
   return (
     <div>
       <ArticleTemplate meta={meta}>
-        <div dangerouslySetInnerHTML={{ __html: post.content }} />
+        <div dangerouslySetInnerHTML={{ __html: article.body }} />
       </ArticleTemplate>
     </div>
   )
@@ -31,22 +33,14 @@ const Post = ({ post }: any) => {
 export default Post
 
 export const getStaticProps = async ({ params }: any) => {
-  const posts = await getPostBySlug([params.slug])
-  const post = posts[0]
-  const content = await markdownToHtml(post.markdown || '')
+  const article = await getArticle(params.slug)
 
-  return {
-    props: {
-      post: {
-        ...post,
-        content,
-      },
-    },
-  }
+  return { props: { article } }
 }
 
 export const getStaticPaths = async () => {
-  const slugs = await getAllPostSlugs()
+  const slugs = await getAllArticleSlug()
+  // const slugs = await getAllPostSlugs()
   const paths = slugs.map((slug) => ({
     params: { slug },
   }))

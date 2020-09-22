@@ -3,7 +3,7 @@ import { Article } from '~/ddd/domain/article/entity'
 export type ListParams = {
   page?: number
   fields?: string[]
-  tag?: string
+  tagId?: string
 }
 
 export interface ArticleRepository {
@@ -11,9 +11,9 @@ export interface ArticleRepository {
     params: ListParams
   ): Promise<{
     articles: Article[]
-    totalCount?: number
-    offset?: number
-    limit?: number
+    totalCount: number
+    offset: number
+    limit: number
   }>
   find(id: string): Promise<Article>
 }

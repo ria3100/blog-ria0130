@@ -2,7 +2,7 @@ import { useRouter } from 'next/router'
 import ErrorPage from 'next/error'
 
 import { Article } from '~/ddd/domain/article/entity'
-import { getAllArticleSlug, getArticle } from '~/lib/article'
+import { getArticleSlugs, getArticle } from '~/lib/api'
 import { ArticleTemplate } from '~/components/templates'
 
 export const config = { amp: true }
@@ -32,15 +32,15 @@ const Post = ({ article }: { article: Article }) => {
 
 export default Post
 
-export const getStaticProps = async ({ params }: any) => {
+type StaticProps = { params: { slug: string } }
+export const getStaticProps = async ({ params }: StaticProps) => {
   const article = await getArticle(params.slug)
 
   return { props: { article } }
 }
 
 export const getStaticPaths = async () => {
-  const slugs = await getAllArticleSlug()
-  // const slugs = await getAllPostSlugs()
+  const slugs = await getArticleSlugs()
   const paths = slugs.map((slug) => ({
     params: { slug },
   }))

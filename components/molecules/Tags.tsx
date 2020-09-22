@@ -9,9 +9,9 @@ export const Tags: React.FC<Props> = ({ tags }) => {
     <span className="">
       <i className="fas fa-tags" />
       <ul className="inline">
-        {tags.map(tag => (
+        {tags.map((tag) => (
           <li className="inline-block" key={tag}>
-            <Tag>{tag}</Tag>
+            <Tag item={tag} />
           </li>
         ))}
       </ul>

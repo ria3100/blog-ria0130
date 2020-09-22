@@ -1,9 +1,15 @@
 import * as React from 'react'
+import Link from 'next/link'
 
-export const Tag: React.FC = ({ children }) => {
+type Props = { item: string }
+export const Tag: React.FC<Props> = ({ item }) => {
+  const encodeTag = encodeURI(item.toLowerCase())
+
   return (
-    <div className="bg-gray-100 ml-2 rounded-3px text-center text-xs py-1 px-2">
-      {children}
-    </div>
+    <Link href={`/article/tag/${encodeTag}/1`}>
+      <a className="bg-gray-100 ml-2 rounded-3px text-center text-xs py-1 px-2">
+        {item}
+      </a>
+    </Link>
   )
 }

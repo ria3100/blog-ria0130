@@ -8,16 +8,16 @@ export class ListArticleUsecase {
     this.articleRepository = articleRepository
   }
 
-  public async do({ page, tag }: { page?: number; tag?: string }) {
+  public async do({ page, tagId }: { page?: number; tagId?: string }) {
     const query = {
       page,
       fields: ['id', 'publishedAt', 'title', 'description', 'tags'],
-      tag,
+      tagId,
     }
 
     const { articles } = await this.articleRepository.list(query)
 
-    if (!articles) return undefined
+    if (!articles) return [] as Article[]
 
     return articles.map((article) => articleDTO(article))
   }

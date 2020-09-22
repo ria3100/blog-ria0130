@@ -7,15 +7,13 @@ export class IdsArticleUsecase {
     this.articleRepository = articleRepository
   }
 
-  public async do(tag?: string) {
+  public async do({ tagId }: { tagId?: string }) {
     const query = {
       fields: ['id'],
-      tag,
+      tagId,
     }
 
     const { articles } = await this.articleRepository.list(query)
-
-    if (!articles) return []
 
     return articles.map((article) => article.id)
   }

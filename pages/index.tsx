@@ -3,7 +3,7 @@ import { NextPage } from 'next'
 import { HomeTemplate } from '~/components/templates'
 import { Meta } from '~/components/atoms'
 
-import { getArticlelist } from '~/lib/article'
+import { getArticlelist } from '~/lib/api'
 
 export const config = { amp: true }
 

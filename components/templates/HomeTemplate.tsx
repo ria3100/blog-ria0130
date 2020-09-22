@@ -1,5 +1,4 @@
 import * as React from 'react'
-import Link from 'next/link'
 
 import { Navigation, Mainvisual, List, Footer } from '~/components/organisms'
 import { AnimatedRoute } from '~/components/atoms'

@@ -23,7 +23,7 @@ type Article = {
   tags: string[]
   publishedAt: string
   description: string
-  markdown: string
+  body: string
 }
 
 type ArticleListItem = Omit<Article, 'markdown'>

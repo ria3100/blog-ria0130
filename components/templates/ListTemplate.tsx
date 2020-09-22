@@ -3,7 +3,6 @@ import { useRouter } from 'next/router'
 
 import { Navigation, List, Footer } from '~/components/organisms'
 import { Pager } from '~/components/molecules'
-import { AnimatedRoute } from '~/components/atoms'
 
 type Props = { articles: Article[]; hasPrev: boolean; hasNext: boolean }
 
@@ -16,7 +15,7 @@ export const ListTemplate: React.FC<Props> = ({
   const { tag, page } = router.query as { tag: string; page: string }
 
   return (
-    <AnimatedRoute>
+    <>
       <div className="flex flex-col min-h-screen">
         <div className="">
           <Navigation />
@@ -25,6 +24,6 @@ export const ListTemplate: React.FC<Props> = ({
         </div>
       </div>
       <Footer />
-    </AnimatedRoute>
+    </>
   )
 }

@@ -1,7 +1,7 @@
 import * as React from 'react'
 
 import { Navigation, Title, Content, Footer } from '~/components/organisms'
-import { Meta, AnimatedRoute } from '~/components/atoms'
+import { Meta } from '~/components/atoms'
 
 type Props = { meta: any }
 
@@ -18,19 +18,17 @@ export const ArticleTemplate: React.FC<Props> = ({ children, meta }) => {
   return (
     <>
       <Meta {...metadata} />
-      <AnimatedRoute>
-        <div className="flex flex-col min-h-screen">
-          <div className="relative">
-            <div className="absolute w-full h-480px max-h-900 bg-gray-900 -z-1" />
-            <div className="absolute w-full">
-              <Navigation />
-            </div>
-            <Title title={meta.title} date={meta.publishedAt} />
-            <Content meta={meta}>{children}</Content>
+      <div className="flex flex-col min-h-screen">
+        <div className="relative">
+          <div className="absolute w-full h-480px max-h-900 bg-gray-900 -z-1" />
+          <div className="absolute w-full">
+            <Navigation />
           </div>
+          <Title title={meta.title} date={meta.publishedAt} />
+          <Content meta={meta}>{children}</Content>
         </div>
-        <Footer />
-      </AnimatedRoute>
+      </div>
+      <Footer />
     </>
   )
 }

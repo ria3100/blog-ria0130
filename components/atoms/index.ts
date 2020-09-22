@@ -1,5 +1,4 @@
 export * from '~/components/atoms/Meta'
-export * from '~/components/atoms/AnimatedRoute'
 export * from '~/components/atoms/Date'
 export * from '~/components/atoms/Tag'
 export * from '~/components/atoms/SectionTitle'

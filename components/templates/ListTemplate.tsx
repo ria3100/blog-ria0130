@@ -13,7 +13,7 @@ export const ListTemplate: React.FC<Props> = ({
   hasNext,
 }) => {
   const router = useRouter()
-  const { tag, page } = router.query
+  const { tag, page } = router.query as { tag: string; page: string }
 
   return (
     <AnimatedRoute>
@@ -21,7 +21,7 @@ export const ListTemplate: React.FC<Props> = ({
         <div className="">
           <Navigation />
           <List articles={articles} />
-          <Pager tag={tag} page={page} hasPrev={hasPrev} hasNext={hasNext} />
+          <Pager tag={tag} page={+page} hasPrev={hasPrev} hasNext={hasNext} />
         </div>
       </div>
       <Footer />

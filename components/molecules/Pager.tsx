@@ -5,13 +5,13 @@ type Props = { tag: string; page: number; hasPrev: boolean; hasNext: boolean }
 
 export const Pager: React.FC<Props> = ({ tag, page, hasPrev, hasNext }) => {
   const Prev = () => (
-    <Link href={`/article/tag/${tag}/${+page - 1}`}>
+    <Link href={`/articles/${tag}/${page - 1}`}>
       <a>Prev</a>
     </Link>
   )
 
   const Next = () => (
-    <Link href={`/article/tag/${tag}/${+page + 1}`}>
+    <Link href={`/articles/${tag}/${page + 1}`}>
       <a>Next</a>
     </Link>
   )

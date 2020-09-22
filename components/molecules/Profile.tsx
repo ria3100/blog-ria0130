@@ -30,7 +30,9 @@ export const Profile: React.FC = () => {
               <p className="leading-relaxed text-lg mb-4">
                 PrAha Inc. フロントエンドエンジニア
                 <br />
-                TypeScript, React / Next.js 辺りを中心にやってます。
+                TypeScript, React / Next.js 辺りを中心にやってます。microCMS
+                などを用いた Jamstack
+                なサイト構築が得意で、ウェブサイトの速度とUXの向上に力を入れています。
               </p>
             </div>
           </div>

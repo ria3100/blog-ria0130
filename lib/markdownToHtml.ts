@@ -4,11 +4,11 @@ const meta = require('markdown-it-meta')
 const shiki = require('shiki')
 
 const additions = {
-  p: 'px-4 mb-6',
-  h1: 'text-3xl px-4 mb-6',
-  h2: 'text-2xl px-4 mb-6',
-  h3: 'text-xl px-4 mb-6',
-  ul: 'px-4 mb-6',
+  p: 'px-8 mb-8',
+  h1: 'text-3xl px-8 mb-8',
+  h2: 'text-2xl px-8 mb-8',
+  h3: 'text-xl px-8 mb-8',
+  ul: 'px-8 mb-8',
 }
 
 export const markdownToHtml = async (markdown: string) => {

@@ -28,11 +28,13 @@ export const Profile: React.FC = () => {
             </div>
             <div className="sm:w-2/3 sm:pl-8 sm:py-8 sm:border-l border-gray-300 sm:border-t-0 border-t mt-4 pt-4 sm:mt-0 text-center sm:text-left">
               <p className="leading-relaxed text-lg mb-4">
-                PrAha Inc. フロントエンドエンジニア
-                <br />
-                TypeScript, React / Next.js 辺りを中心にやってます。microCMS
-                などを用いた Jamstack
-                なサイト構築が得意で、ウェブサイトの速度とUXの向上に力を入れています。
+                <p className="pb-2">PrAha Inc. フロントエンドエンジニア</p>
+                <p className="pb-2">
+                  TypeScript, React / Next.js 辺りを中心にやってます。microCMS
+                  などを用いた Jamstack
+                  なサイト構築が得意で、ウェブサイトの速度とUXの向上に力を入れています。
+                </p>
+                <p className="pb-2">フリーランスとして活動もしています。</p>
               </p>
             </div>
           </div>

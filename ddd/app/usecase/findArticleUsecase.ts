@@ -10,8 +10,8 @@ export class FindArticleUsecase {
   }
 
   public async do(id: string) {
-    const article: Article = await this.articleRepository.find(id)
-    if (!article) return {} as Article
+    const article = await this.articleRepository.find(id)
+    if (!article) return null
 
     return articleDTO(article)
   }

@@ -1,4 +1,5 @@
 import dayjs from 'dayjs'
+import fetch from 'node-fetch'
 
 import { Article } from '~/ddd/domain/article/entity'
 import { ListParams } from '~/ddd/domain/article/repository'
@@ -74,6 +75,13 @@ export class ArticleRepositoryImpl {
     // if (params.tag)
 
     const res = await fetch(`${host}/article/?${query.join('&')}`, option)
+    if (!res.ok)
+      return {
+        articles: [] as Article[],
+        totalCount: 0,
+        offset: 0,
+        limit: 0,
+      }
 
     const posts = (await res.json()) as responseList
 
@@ -94,6 +102,8 @@ export class ArticleRepositoryImpl {
   public async find(id: string) {
     const { host, option } = this.connection
     const res = await fetch(`${host}/article/${id}`, option)
+
+    if (!res.ok) return null
 
     const post = (await res.json()) as ResponseArticle
 

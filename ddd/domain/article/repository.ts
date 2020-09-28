@@ -15,5 +15,5 @@ export interface ArticleRepository {
     offset: number
     limit: number
   }>
-  find(id: string): Promise<Article>
+  find(id: string): Promise<Article | null>
 }

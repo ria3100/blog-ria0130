@@ -1,10 +1,18 @@
+import { NextPage } from 'next'
+import { useRouter } from 'next/router'
+import ErrorPage from '~/pages/_error'
+
 import { getArticleSlugs, getArticlelist, getTaglist } from '~/lib/api'
 import { ListTemplate } from '~/components/templates'
 
 export const config = { amp: true }
 
 type Props = { articleList: Article[]; hasPrev: boolean; hasNext: boolean }
-const Post: React.FC<Props> = ({ articleList, hasPrev, hasNext }) => {
+const Post: NextPage<Props> = ({ articleList, hasPrev, hasNext }) => {
+  const router = useRouter()
+
+  if (!router.isFallback && !articleList) return <ErrorPage statusCode={404} />
+
   return (
     <>
       <ListTemplate
@@ -33,39 +41,13 @@ export const getStaticProps = async ({ params }: StaticProps) => {
   const hasPrev = +params.page > 1
   const hasNext = +params.page < pageNum
 
-  return { props: { articleList, hasNext, hasPrev } }
-}
-
-export const getStaticPaths = async () => {
-  const tags = await getTaglist()
-
-  const pathItem = (tagName: string, slugs: string[]) => {
-    const pageNum = Math.ceil(slugs.length / 10)
-
-    return [...Array(pageNum).keys()].map((i) => ({
-      params: {
-        tag: encodeURI(tagName.toLowerCase()),
-        page: i + 1 + '',
-      },
-    }))
-  }
-
-  // タグ指定
-  const tmp = await Promise.all(
-    tags.map(async (tag) => {
-      const slugs = await getArticleSlugs({ tagId: tag.id })
-      return pathItem(tag.name, slugs)
-    })
-  )
-
-  // 全件
-  const slugs = await getArticleSlugs()
-  tmp.push(pathItem('all', slugs))
-
-  const paths = tmp.flat()
-
   return {
-    paths,
-    fallback: false,
+    props: { articleList, hasNext, hasPrev },
+    revalidate: 1,
   }
 }
+
+export const getStaticPaths = async () => ({
+  paths: [],
+  fallback: 'unstable_blocking',
+})

@@ -31,7 +31,7 @@ const Home: NextPage<Props> = ({ articles }) => {
 export const getStaticProps = async () => {
   const articles = await getArticlelist({ page: 0 })
 
-  return { props: { articles } }
+  return { props: { articles }, revalidate: 1 }
 }
 
 export default Home

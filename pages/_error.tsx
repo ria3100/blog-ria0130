@@ -44,66 +44,32 @@ export default class Error<P = {}> extends React.Component<P & ErrorProps> {
       'An unexpected error has occurred'
 
     return (
-      <div className="flex flex-col min-h-screen bg-gray-900">
-        <div className="absolute w-full">
-          <Navigation />
-        </div>
+      <>
+        <Head>
+          <title>
+            {statusCode}: {title}
+          </title>
+        </Head>
 
-        <div style={styles.error}>
-          <Head>
-            <title>
-              {statusCode}: {title}
-            </title>
-          </Head>
-          <div>
-            {statusCode ? <h1 style={styles.h1}>{statusCode}</h1> : null}
-            <div style={styles.desc}>
-              <h2 style={styles.h2}>{title}.</h2>
+        <div className="flex flex-col min-h-screen bg-gray-900">
+          <div className="absolute w-full">
+            <Navigation />
+          </div>
+
+          <div className="flex flex-col justify-center text-center h-screen text-gray-200">
+            <div>
+              {statusCode ? (
+                <h1 className="text-3xl leading-8 border-r inline-block p-8 mr-8">
+                  {statusCode}
+                </h1>
+              ) : null}
+              <div className="inline-block text-left align-middle leading-8 inline-block">
+                <h2 className="text-sm">{title}.</h2>
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      </>
     )
   }
-}
-
-const styles: { [k: string]: React.CSSProperties } = {
-  error: {
-    color: '#f1f2ef',
-    fontFamily:
-      '-apple-system, BlinkMacSystemFont, Roboto, "Segoe UI", "Fira Sans", Avenir, "Helvetica Neue", "Lucida Grande", sans-serif',
-    height: '100vh',
-    textAlign: 'center',
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-
-  desc: {
-    display: 'inline-block',
-    textAlign: 'left',
-    lineHeight: '49px',
-    height: '49px',
-    verticalAlign: 'middle',
-  },
-
-  h1: {
-    display: 'inline-block',
-    borderRight: '1px solid #fff',
-    margin: 0,
-    marginRight: '20px',
-    padding: '10px 23px 10px 0',
-    fontSize: '24px',
-    fontWeight: 500,
-    verticalAlign: 'top',
-  },
-
-  h2: {
-    fontSize: '14px',
-    fontWeight: 'normal',
-    lineHeight: 'inherit',
-    margin: 0,
-    padding: 0,
-  },
 }

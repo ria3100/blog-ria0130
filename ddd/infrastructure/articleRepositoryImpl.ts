@@ -67,12 +67,9 @@ export class ArticleRepositoryImpl {
       query.push(`offset=${offset}`)
     }
 
-    if (params.fields) {
-      query.push(`fields=${params.fields.join()}`)
-    }
+    if (params.fields) query.push(`fields=${params.fields.join()}`)
 
-    // FIXME: タグ絞り込み作る
-    // if (params.tag)
+    if (params.tagId) query.push(`filters=tags[contains]${params.tagId}`)
 
     const res = await fetch(`${host}/article/?${query.join('&')}`, option)
     if (!res.ok)

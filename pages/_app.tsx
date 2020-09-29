@@ -1,13 +1,6 @@
 import React from 'react'
-import { NextComponentType, NextPageContext } from 'next'
-import { useRouter } from 'next/router'
+import { AppProps } from 'next/app'
 
-type Props = {
-  Component: NextComponentType<NextPageContext, any, {}>
-  pageProps: any
-}
-const MyApp: React.FC<Props> = ({ Component, pageProps }) => {
-  return <Component {...pageProps} />
-}
+const App = ({ Component, pageProps }: AppProps) => <Component {...pageProps} />
 
-export default MyApp
+export default App

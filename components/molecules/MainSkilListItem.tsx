@@ -1,5 +1,3 @@
-import * as React from 'react'
-
 type Props = {
   item: {
     name: string

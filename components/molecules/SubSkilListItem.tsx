@@ -1,5 +1,3 @@
-import * as React from 'react'
-
 type Props = { name: string }
 
 export const SubSkilListItem: React.FC<Props> = ({ name }) => {

@@ -1,5 +1,3 @@
-import * as React from 'react'
-
 import { Navigation, Title, Content, Footer } from '~/components/organisms'
 import { Meta } from '~/components/atoms'
 

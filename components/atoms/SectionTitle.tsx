@@ -1,5 +1,3 @@
-import * as React from 'react'
-
 export const SectionTitle: React.FC = ({ children }) => {
   return (
     <div className="flex flex-col text-center w-full mb-8 lg:mb-12 lg:mt-8">

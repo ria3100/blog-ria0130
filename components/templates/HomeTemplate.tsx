@@ -1,5 +1,3 @@
-import * as React from 'react'
-
 import { Navigation, Mainvisual, List, Footer } from '~/components/organisms'
 
 type Props = { articles: ArticleListItem[] }

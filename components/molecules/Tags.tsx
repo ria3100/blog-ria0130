@@ -1,5 +1,3 @@
-import * as React from 'react'
-
 import { Tag } from '~/components/atoms'
 
 type Props = { tags: string[] }

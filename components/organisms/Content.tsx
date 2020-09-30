@@ -1,5 +1,3 @@
-import * as React from 'react'
-
 import { ArticleFooter } from '~/components/organisms'
 import { Tags } from '~/components/molecules'
 

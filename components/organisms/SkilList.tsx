@@ -1,5 +1,3 @@
-import * as React from 'react'
-
 import { SectionTitle } from '~/components/atoms'
 import { MainSkilListItem, SubSkilListItem } from '~/components/molecules'
 

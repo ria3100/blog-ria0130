@@ -1,5 +1,3 @@
-import * as React from 'react'
-
 import { Navigation, Footer, SkilList } from '~/components/organisms'
 import { Profile, ThisSite, Contact } from '~/components/molecules'
 

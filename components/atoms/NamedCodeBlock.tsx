@@ -1,4 +1,3 @@
-import * as React from 'react'
 // import { fetchFileIcon } from 'utils/fileIcons'
 
 type Props = { filename: string }

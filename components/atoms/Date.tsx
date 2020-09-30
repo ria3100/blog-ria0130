@@ -1,5 +1,3 @@
-import * as React from 'react'
-
 type Props = { date: string }
 
 export const Date: React.FC<Props> = ({ date }) => {

@@ -1,5 +1,3 @@
-import * as React from 'react'
-
 export const Mainvisual: React.FC = () => {
   return (
     <div className="flex flex-col justify-center w-full h-60vh min-h-400 lg:h-80vh max-h-900 bg-gray-900">

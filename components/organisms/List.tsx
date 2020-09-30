@@ -1,5 +1,3 @@
-import * as React from 'react'
-
 import { ListItem } from '~/components/molecules'
 
 type Props = { articles: ArticleListItem[] }

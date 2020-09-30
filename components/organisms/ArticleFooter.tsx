@@ -1,4 +1,3 @@
-import * as React from 'react'
 // import { useAmp } from 'next/amp'
 
 import { ShareButtons } from '~/components/molecules'

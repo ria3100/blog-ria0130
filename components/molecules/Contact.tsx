@@ -1,5 +1,3 @@
-import * as React from 'react'
-
 import { SectionTitle } from '~/components/atoms'
 
 export const Contact: React.FC = () => {

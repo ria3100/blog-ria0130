@@ -1,4 +1,3 @@
-import * as React from 'react'
 import Link from 'next/link'
 
 export const Navigation: React.FC = () => {

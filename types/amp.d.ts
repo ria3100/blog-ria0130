@@ -9,8 +9,14 @@ declare namespace JSX {
     className?: string
   }
 
+  interface AmpState {
+    id?: string
+    children?: Element
+  }
+
   interface IntrinsicElements {
     'amp-img': AmpImg
+    'amp-state': AmpState
     'amp-install-serviceworker': any
   }
 }

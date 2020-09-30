@@ -27,3 +27,15 @@ type Article = {
 }
 
 type ArticleListItem = Omit<Article, 'markdown'>
+
+interface AmpAnchorHTMLAttributes<T> extends React.AnchorHTMLAttributes<T> {
+  on?: string
+}
+declare namespace JSX {
+  interface IntrinsicElements {
+    a: React.DetailedHTMLProps<
+      AmpAnchorHTMLAttributes<HTMLAnchorElement>,
+      HTMLAnchorElement
+    >
+  }
+}

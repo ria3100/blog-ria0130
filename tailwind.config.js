@@ -54,9 +54,11 @@ module.exports = {
       },
       maxHeight: {
         '900': '900px',
+        '60vh': '60vh',
       },
       inset: {
         '-50': '-50px',
+        '56px': '56px',
       },
       zIndex: {
         '-1': '-1',
@@ -67,6 +69,12 @@ module.exports = {
       borderRadius: {
         '3px': '3px',
         '2px': '2px',
+      },
+      opacity:{
+        '80': '.8',
+        '85': '.85',
+        '90': '.9',
+        '95': '.95',
       },
     },
 

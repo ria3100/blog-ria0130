@@ -4,7 +4,7 @@ import { SectionTitle } from '~/components/atoms'
 
 export const ThisSite: React.FC = () => {
   return (
-    <section className="text-gray-700 body-font">
+    <section className="text-gray-700 body-font my-20">
       <SectionTitle>このサイトを支える技術</SectionTitle>
       <div className="container px-5 mx-auto">
         <div className="flex flex-wrap -mx-4">

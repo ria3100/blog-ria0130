@@ -4,7 +4,7 @@ import { SectionTitle } from '~/components/atoms'
 
 export const Contact: React.FC = () => {
   return (
-    <section className="text-gray-700 body-font">
+    <section className="text-gray-700 body-font my-20">
       <div className="container px-5 mx-auto">
         <div className="flex flex-col text-center w-full mb-12">
           <SectionTitle>Contact</SectionTitle>

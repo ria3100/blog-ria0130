@@ -4,8 +4,8 @@ import { SectionTitle } from '~/components/atoms'
 
 export const Profile: React.FC = () => {
   return (
-    <section className="text-gray-700 body-font">
-      <div className="container px-5 py-8 mx-auto flex flex-col">
+    <section className="text-gray-700 body-font my-20">
+      <div className="container px-5 mx-auto flex flex-col">
         <div className="lg:w-4/6 mx-auto">
           <SectionTitle>Profile</SectionTitle>
           <div className="flex flex-col sm:flex-row mt-10">

@@ -13,9 +13,8 @@ export const ThisSite: React.FC = () => {
                   フロントエンド: Next.js / React
                 </p>
                 <p className="leading-relaxed mb-8">
-                  Next.js で SSG
-                  の機能を使ってすべてのページを静的ファイルで生成しています。
-                  fullAMP や PWA
+                  Next.js で Incremental Static Regeneration
+                  の機能を使ってすべてのページを生成しています。 fullAMP や PWA
                   にも対応していてページの表示速度に貢献しています。
                 </p>
               </div>

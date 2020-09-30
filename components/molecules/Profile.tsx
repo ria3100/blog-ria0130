@@ -32,7 +32,7 @@ export const Profile: React.FC = () => {
                   などを用いた Jamstack
                   なサイト構築が得意で、ウェブサイトの速度とUXの向上に力を入れています。
                 </p>
-                <p className="pb-2">フリーランスとして活動もしています。</p>
+                <p className="pb-2">フリーランスとしても活動しています。</p>
               </p>
             </div>
           </div>

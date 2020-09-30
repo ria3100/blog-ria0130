@@ -8,7 +8,7 @@ export const config = { amp: true }
 const About: NextPage = () => {
   const meta = {
     title: 'About',
-    description: 'このサイトについて',
+    description: 'このサイトを支える技術',
     og: { type: 'website', image: '', path: '/about' },
   }
 

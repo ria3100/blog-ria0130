@@ -5,8 +5,6 @@ import ErrorPage from '~/pages/_error'
 import { getArticleSlugs, getArticlelist, getTaglist } from '~/lib/api'
 import { ListTemplate } from '~/components/templates'
 
-export const config = { amp: true }
-
 type Props = { articleList: Article[]; hasPrev: boolean; hasNext: boolean }
 const Post: NextPage<Props> = ({ articleList, hasPrev, hasNext }) => {
   const router = useRouter()
@@ -49,5 +47,5 @@ export const getStaticProps = async ({ params }: StaticProps) => {
 
 export const getStaticPaths = async () => ({
   paths: [],
-  fallback: 'unstable_blocking',
+  fallback: true,
 })

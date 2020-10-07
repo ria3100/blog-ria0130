@@ -3,8 +3,6 @@ import { NextPage } from 'next'
 import { ContactTemplate } from '~/components/templates'
 import { Meta } from '~/components/atoms'
 
-export const config = { amp: true }
-
 const Contact: NextPage = () => {
   const meta = {
     title: 'Contact',

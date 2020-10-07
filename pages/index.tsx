@@ -5,8 +5,6 @@ import { Meta } from '~/components/atoms'
 
 import { getArticlelist } from '~/lib/api'
 
-export const config = { amp: true }
-
 type Props = { articles: ArticleListItem[] }
 const Home: NextPage<Props> = ({ articles }) => {
   const meta = {

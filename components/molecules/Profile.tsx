@@ -9,7 +9,7 @@ export const Profile: React.FC = () => {
           <div className="flex flex-col sm:flex-row mt-10">
             <div className="sm:w-1/3 text-center sm:pr-8 sm:py-8">
               <div className="w-40 h-40 rounded-full inline-flex items-center justify-center bg-gray-200 text-gray-400">
-                <amp-img
+                <img
                   className="rounded-full"
                   src="/profile.png"
                   width="160"

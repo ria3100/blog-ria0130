@@ -6,8 +6,6 @@ import { Article } from '~/ddd/domain/article/entity'
 import { getArticle } from '~/lib/api'
 import { ArticleTemplate } from '~/components/templates'
 
-export const config = { amp: true }
-
 const Post: NextPage<{ article: Article }> = ({ article }) => {
   const router = useRouter()
 
@@ -39,5 +37,5 @@ export const getStaticProps = async ({ params }: StaticProps) => {
 
 export const getStaticPaths = async () => ({
   paths: [],
-  fallback: 'unstable_blocking',
+  fallback: true,
 })

@@ -40,11 +40,6 @@ export const Meta: React.FC<Props> = ({ title, description, og, keywords }) => {
       />
       <script
         async
-        custom-element="amp-bind"
-        src="https://cdn.ampproject.org/v0/amp-bind-0.1.js"
-      ></script>
-      <script
-        async
         custom-element="amp-install-serviceworker"
         src="https://cdn.ampproject.org/v0/amp-install-serviceworker-0.1.js"
       ></script>

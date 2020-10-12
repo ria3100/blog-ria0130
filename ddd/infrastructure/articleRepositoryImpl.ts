@@ -1,40 +1,19 @@
 import dayjs from 'dayjs'
 import fetch from 'node-fetch'
+import aspida from '@aspida/node-fetch'
 
+import api from '~/apis/$api'
+import { ArticleItem } from '~/apis/article'
 import { Article } from '~/ddd/domain/article/entity'
 import { ListParams } from '~/ddd/domain/article/repository'
 import { markdownToHtml } from '~/lib/markdownToHtml'
 
 type Connection = {
   host: string
-  option: { headers: { 'X-API-KEY': string } }
+  config: { headers: { 'X-API-KEY': string } }
 }
 
-type ResponseArticle = {
-  id: string
-  createdAt: string
-  updatedAt: string
-  publishedAt: string
-  title: string
-  description: string
-  tags: {
-    id: string
-    createdAt: string
-    updatedAt: string
-    publishedAt: string
-    name: string
-  }[]
-  markdown: string
-}
-
-type responseList = {
-  contents: ResponseArticle[]
-  totalCount: number
-  offset: number
-  limit: number
-}
-
-const converContent = async (item: ResponseArticle) => {
+const converContent = async (item: ArticleItem) => {
   const { id, title, publishedAt, description, tags, markdown } = item
 
   return new Article({
@@ -42,7 +21,7 @@ const converContent = async (item: ResponseArticle) => {
     title,
     publishedAt: publishedAt ? dayjs(publishedAt).format('YYYY-MM-DD') : '',
     description: description,
-    tags: tags ? tags.map((tag: ResponseArticle['tags'][0]) => tag.name) : [],
+    tags: tags ? tags.map((tag: ArticleItem['tags'][0]) => tag.name) : [],
     body: markdown ? await markdownToHtml(markdown) : '',
   })
 }
@@ -56,7 +35,7 @@ export class ArticleRepositoryImpl {
   }
 
   public async list(params: ListParams) {
-    const { host, option } = this.connection
+    const { host, config } = this.connection
 
     const query = []
 
@@ -71,8 +50,10 @@ export class ArticleRepositoryImpl {
 
     if (params.tagId) query.push(`filters=tags[contains]${params.tagId}`)
 
-    const res = await fetch(`${host}/article/?${query.join('&')}`, option)
-    if (!res.ok)
+    const f = api(aspida(fetch, { baseURL: host }))
+    const res = await f.article.$get({ config })
+
+    if (!res?.contents)
       return {
         articles: [] as Article[],
         totalCount: 0,
@@ -80,12 +61,10 @@ export class ArticleRepositoryImpl {
         limit: 0,
       }
 
-    const posts = (await res.json()) as responseList
+    const posts = res
 
     const articles = await Promise.all(
-      posts.contents.map(
-        async (post: ResponseArticle) => await converContent(post)
-      )
+      posts.contents.map(async (post) => await converContent(post))
     )
 
     return {
@@ -97,13 +76,13 @@ export class ArticleRepositoryImpl {
   }
 
   public async find(id: string) {
-    const { host, option } = this.connection
-    const res = await fetch(`${host}/article/${id}`, option)
+    const { host, config } = this.connection
 
-    if (!res.ok) return null
+    const f = api(aspida(fetch, { baseURL: host }))
+    const res = await f.article._contentId(id).$get({ config })
 
-    const post = (await res.json()) as ResponseArticle
+    if (!res.title) return null
 
-    return await converContent(post)
+    return await converContent(res)
   }
 }

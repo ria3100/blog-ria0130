@@ -13,7 +13,7 @@ import {
 
 const connection = {
   host: process.env.NEXT_PUBLIC_MICRO_CMS || '',
-  option: {
+  config: {
     headers: { 'X-API-KEY': process.env.NEXT_PUBLIC_X_API_KEY || '' },
   },
 }

@@ -8,14 +8,17 @@
     "style": "postcss styles/main.css --config styles -o temp/build.css",
     "build": "yarn style --env production && next build",
     "start": "next start",
-    "export": "yarn build && next export"
+    "export": "yarn build && next export",
+    "api:build": "aspida"
   },
   "dependencies": {
+    "@aspida/node-fetch": "^0.9.0",
     "@mdx-js/loader": "^1.5.8",
     "@mdx-js/runtime": "^1.5.8",
     "@toycode/markdown-it-class": "^1.2.4",
     "@types/node-fetch": "^2.5.7",
     "@zeit/next-css": "^1.0.1",
+    "aspida": "^0.22.0",
     "dayjs": "^1.8.36",
     "framer-motion": "^1.10.3",
     "hast-util-to-string": "^1.0.4",

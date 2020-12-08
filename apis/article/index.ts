@@ -19,6 +19,10 @@ export type ArticleItem = {
 
 export interface Methods {
   get: {
+    query?: {
+      fields?: string
+      filters?: string
+    }
     resBody: {
       contents: ArticleItem[]
       totalCount: number

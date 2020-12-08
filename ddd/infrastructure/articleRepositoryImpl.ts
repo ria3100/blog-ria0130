@@ -37,21 +37,26 @@ export class ArticleRepositoryImpl {
   public async list(params: ListParams) {
     const { host, config } = this.connection
 
-    const query = []
+    const page = params.page || 1
 
-    if (params.page) {
-      const limit = this.pageNum
-      const offset = this.pageNum * params.page - this.pageNum
-      query.push(`limit=${limit}`)
-      query.push(`offset=${offset}`)
+    const limit = this.pageNum
+    const offset = this.pageNum * page - this.pageNum
+
+    const query: {
+      limit: number
+      offset: number
+      fields?: string
+      filters?: string
+    } = {
+      limit,
+      offset,
     }
 
-    if (params.fields) query.push(`fields=${params.fields.join()}`)
-
-    if (params.tagId) query.push(`filters=tags[contains]${params.tagId}`)
+    if (params.fields) query.fields = params.fields.join()
+    if (params.tagId) query.filters = `tags[contains]${params.tagId}`
 
     const f = api(aspida(fetch, { baseURL: host }))
-    const res = await f.article.$get({ config })
+    const res = await f.article.$get({ ...config, query })
 
     if (!res?.contents)
       return {

@@ -6,22 +6,22 @@ import { Article } from '~/ddd/domain/article/entity'
 import { getArticle } from '~/lib/api'
 import { ArticleTemplate } from '~/components/templates'
 
-const Post: NextPage<{ article: Article }> = ({ article }) => {
+const Post: NextPage<{ article?: Article }> = ({ article }) => {
   const router = useRouter()
 
-  if (!router.isFallback && !article?.id) return <ErrorPage statusCode={404} />
+  if (!router.isFallback && !article) return <ErrorPage statusCode={404} />
 
   const meta = {
-    title: article.title,
-    tags: article.tags,
-    publishedAt: article.publishedAt,
-    description: article.description,
+    title: article?.title || '',
+    tags: article?.tags || [],
+    publishedAt: article?.publishedAt || '',
+    description: article?.description || '',
   }
 
   return (
     <>
       <ArticleTemplate meta={meta}>
-        <div dangerouslySetInnerHTML={{ __html: article.body }} />
+        <div dangerouslySetInnerHTML={{ __html: article?.body || '' }} />
       </ArticleTemplate>
     </>
   )

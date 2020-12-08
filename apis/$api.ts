@@ -1,5 +1,5 @@
 /* eslint-disable */
-import { AspidaClient } from 'aspida'
+import { AspidaClient, dataToURLString } from 'aspida'
 import { Methods as Methods0 } from './article'
 import { Methods as Methods1 } from './article/_contentId@string'
 import { Methods as Methods2 } from './tag'
@@ -42,11 +42,12 @@ const api = <T>({ baseURL, fetch }: AspidaClient<T>) => {
           $path: () => `${prefix}${prefix1}`
         }
       },
-      get: (option?: { config?: T }) =>
+      get: (option?: { query?: Methods2['get']['query'], config?: T }) =>
         fetch<Methods2['get']['resBody']>(prefix, PATH1, GET, option).json(),
-      $get: (option?: { config?: T }) =>
+      $get: (option?: { query?: Methods2['get']['query'], config?: T }) =>
         fetch<Methods2['get']['resBody']>(prefix, PATH1, GET, option).json().then(r => r.body),
-      $path: () => `${prefix}${PATH1}`
+      $path: (option?: { method?: 'get'; query: Methods2['get']['query'] }) =>
+        `${prefix}${PATH1}${option && option.query ? `?${dataToURLString(option.query)}` : ''}`
     }
   }
 }

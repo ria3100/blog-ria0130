@@ -20,7 +20,10 @@ export class TagRepositoryImpl {
     const { host, config } = this.connection
 
     const f = api(aspida(fetch, { baseURL: host }))
-    const res = await f.tag.$get({ ...config, query: {limit: 100 } })
+    const res = await f.tag.$get({
+      ...config,
+      query: { limit: 100 },
+    })
 
     return res.contents.map((tag) => new Tag({ id: tag.id, name: tag.name }))
   }

@@ -8,6 +8,9 @@ export type TagItem = {
 
 export interface Methods {
   get: {
+    query?: {
+      limit: number
+    }
     resBody: {
       contents: TagItem[]
       totalCount: number

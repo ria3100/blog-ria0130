@@ -5,7 +5,7 @@ import ErrorPage from '~/pages/_error'
 import { getArticleSlugs, getArticlelist, getTaglist } from '~/lib/api'
 import { ListTemplate } from '~/components/templates'
 
-type Props = { articleList: Article[]; hasPrev: boolean; hasNext: boolean }
+type Props = { articleList?: Article[]; hasPrev?: boolean; hasNext?: boolean }
 const Post: NextPage<Props> = ({ articleList, hasPrev, hasNext }) => {
   const router = useRouter()
 
@@ -14,7 +14,7 @@ const Post: NextPage<Props> = ({ articleList, hasPrev, hasNext }) => {
   return (
     <>
       <ListTemplate
-        articles={articleList}
+        articles={articleList || []}
         hasPrev={hasPrev}
         hasNext={hasNext}
       />

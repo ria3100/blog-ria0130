@@ -19,7 +19,7 @@
     "jsx": "preserve",
     "noImplicitAny": true,
     "baseUrl": ".",
-    "paths": {"~/*": ["./*"]},
+    "paths": {"~/*": ["./src/*"]},
     "downlevelIteration": true,
   },
   "exclude": ["node_modules"],

@@ -14,7 +14,7 @@ const whitelist = Object.keys(codeBlockClassList).reduce((acc, key) => {
   return Array.from(new Set([...acc, ...codeBlockClassList[key].split(' ')]))
 }, [])
 
-const rootDir = process.cwd()
+const rootDir = process.cwd() + '/src'
 
 module.exports = ctx => ({
   map: ctx.options.map,

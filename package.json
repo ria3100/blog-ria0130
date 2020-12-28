@@ -39,7 +39,7 @@
   },
   "devDependencies": {
     "@fullhuman/postcss-purgecss": "2.3.0",
-    "@mdx-js/loader": "1.5.8",
+    "@mdx-js/loader": "1.6.22",
     "@next/mdx": "9.3.2",
     "@testing-library/jest-dom": "5.1.1",
     "@testing-library/react": "10.0.1",

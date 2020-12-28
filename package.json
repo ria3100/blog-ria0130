@@ -38,7 +38,7 @@
     "unist-util-visit": "^2.0.2"
   },
   "devDependencies": {
-    "@fullhuman/postcss-purgecss": "2.1.0",
+    "@fullhuman/postcss-purgecss": "2.3.0",
     "@mdx-js/loader": "1.5.8",
     "@next/mdx": "9.3.2",
     "@testing-library/jest-dom": "5.1.1",

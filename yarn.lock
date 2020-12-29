@@ -60,12 +60,12 @@
   dependencies:
     aspida "^1.1.1"
 
-"@aspida/node-fetch@^0.9.2":
-  version "0.9.2"
-  resolved "https://registry.yarnpkg.com/@aspida/node-fetch/-/node-fetch-0.9.2.tgz#94f6f1b5e81db2a481942ecfa44096332faee811"
-  integrity sha512-N3wgKN0i1rrgi+sGyuj9iDhmUP5AyU90bwVx9jCxdqP31X+3xlLa+aL7IapF0FBeAxDocQSxR6BHNHS0t41lKA==
+"@aspida/node-fetch@^1.0.0":
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/@aspida/node-fetch/-/node-fetch-1.1.1.tgz#d75ec508cd6ecc6d09afff1bef7c9f8d46a850e6"
+  integrity sha512-iK4ap7yjZ/GmHmTUH1VGFYqbAJUGfH4/mvqrGAOtup5rQjrpR5qhBsh/fka32pzRLNpTbmu+L3By+V4HPv5dwA==
   dependencies:
-    aspida "^0.22.2"
+    aspida "^1.1.1"
 
 "@aspida/swr@^1.1.1":
   version "1.1.1"
@@ -2700,15 +2700,6 @@ aspida@^0.22.0:
   dependencies:
     "@types/minimist" "^1.2.0"
     chokidar "^3.4.2"
-    minimist "^1.2.5"
-
-aspida@^0.22.2:
-  version "0.22.2"
-  resolved "https://registry.yarnpkg.com/aspida/-/aspida-0.22.2.tgz#3ecc42113cd7511672d08a0da96a250b9a2f783d"
-  integrity sha512-kqORcxtEM8/NZQe8TIqZD/0S5UiNjvn32eZ02jJLxglrj9XeSQno1oQKgvjwtlULwS5jM3G+o9NN+9bOdD1ZYA==
-  dependencies:
-    "@types/minimist" "^1.2.0"
-    chokidar "^3.4.3"
     minimist "^1.2.5"
 
 aspida@^1.1.1:

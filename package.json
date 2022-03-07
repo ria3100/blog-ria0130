@@ -75,6 +75,6 @@
     "raw-loader": "4.0.1",
     "tailwindcss-plugins": "0.3.0",
     "ts-transformer-preval-macro": "0.0.5",
-    "typescript": "3.8.3"
+    "typescript": "3.9.10"
   }
 }

@@ -33,7 +33,7 @@
     "react-dom": "^16.13.1",
     "react-spring": "^8.0.27",
     "sass": "^1.26.8",
-    "shiki": "^0.1.7",
+    "shiki": "^0.14.0",
     "swr": "^0.3.11",
     "tailwindcss": "^1.2.0",
     "unist-builder": "^2.0.3",
